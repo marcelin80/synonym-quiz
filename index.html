@@ -153,20 +153,82 @@ const ROOTS = {
   sub:"under", pro:"forward", ex:"out", in:"in, not", com:"together", re:"back, again", de:"down, away",
   bene:"good, well", mal:"bad", cogn:"know", psych:"mind", spat2:"space", flu:"flow", ang:"choke",
   viv2:"live", volu2:"roll", urb2:"city", mar:"sea", tur:"turn", sal:"leap", sed2:"sit", pot2:"drink",
-  luc2:"light", amor:"love", cap2:"head"
+  luc2:"light", amor:"love", cap2:"head",
+  tem:"strong drink, moderation",
+  cost:"rib, side",
+  alacr:"brisk, lively",
+  asc:"exercise, train",
+  auster:"harsh, severe",
+  avar:"greed, desire",
+  calumn:"trick, false charge",
+  capr:"goat, leap",
+  cresc:"grow",
+  crep:"creak, rattle",
+  corp:"body",
+  delect:"delight",
+  lect:"choose, gather",
+  lic:"draw out, entice",
+  lacer:"tear",
+  lang:"languish, faint",
+  larg:"large, generous",
+  lass:"weary",
+  lig:"bind",
+  mall:"hammer",
+  mend:"lie",
+  mun:"gift, duty",
+  nasc:"born",
+  nep:"nephew, grandson",
+  not:"know, mark",
+  opac:"dark",
+  pall:"cloak",
+  phil:"love",
+  pejor:"worse",
+  peregr:"abroad, travel",
+  pi:"pious, appease",
+  puer:"boy, child",
+  rus:"country",
+  secul:"age, generation",
+  spons:"promise, pledge",
+  strid:"creak, grate",
+  terr:"earth, land",
+  ubi:"where, everywhere",
+  vel:"veil, cover",
+  veter:"old, year",
+  van:"empty, vanish",
+  via:"way",
+  vestig:"track, trace",
+  fel:"happy, lucky",
+  fov:"warm, cherish",
+  dub:"doubt",
+  jug:"yoke, join",
+  ir:"anger",
+  mit:"send",
+  stern:"throw down, strike",
+  arc:"chest, secret",
+  bland:"soft, mild",
+  tend:"stretch, extend",
+  doc:"teach, show",
+  fort:"strong",
+  fur:"steal, thief",
+  iter:"journey, way",
+  lir:"furrow",
+  oner:"burden",
+  solv:"loosen, solve",
+  var:"bent, straddle"
 };
 
-const RAW = `abject|wretched; miserable; hopeless; base; servile|miserable, hopeless; low in spirit or condition|ject
+const RAW = `
+abject|wretched; miserable; hopeless; base; servile|miserable, hopeless; low in spirit or condition|ject
 abjure|renounce; forswear; recant; repudiate; disavow|to renounce solemnly, often under oath|jur
 abnegation|renunciation; self-denial; surrender; forgoing|the act of giving up or denying oneself something|neg
 abrogate|repeal; annul; revoke; cancel; nullify|to abolish or cancel formally|rog
-abstemious|temperate; moderate; sober; abstinent; restrained|moderate or restrained in eating and drinking|-
-accost|approach; confront; address; buttonhole|to approach and speak to someone boldly|-
+abstemious|temperate; moderate; sober; abstinent; restrained|moderate or restrained in eating and drinking|tem
+accost|approach; confront; address; buttonhole|to approach and speak to someone boldly|cost
 acumen|shrewdness; insight; discernment; perception; keenness|keen insight and good judgment|acu
-adulterate|debase; contaminate; corrupt; taint; dilute|to make impure by adding inferior substances|-
+adulterate|debase; contaminate; corrupt; taint; dilute|to make impure by adding inferior substances|alter
 adumbrate|foreshadow; outline; sketch; hint; presage|to outline vaguely; to hint at what is coming|umbr
 aggrandize|enlarge; augment; exalt; magnify; inflate|to increase in power, wealth, or status|grand
-alacrity|eagerness; readiness; enthusiasm; willingness; promptness|brisk, cheerful readiness|-
+alacrity|eagerness; readiness; enthusiasm; willingness; promptness|brisk, cheerful readiness|alacr
 alias|pseudonym; alter ego; nickname; pen name; assumed name|an assumed name|alter
 alleviate|relieve; ease; mitigate; lessen; soothe|to make suffering or a problem less severe|lev
 allude|hint; refer; suggest; imply; insinuate|to refer to something indirectly|lud
@@ -174,30 +236,30 @@ altruistic|unselfish; selfless; benevolent; generous; philanthropic|concerned wi
 ameliorate|improve; better; enhance; upgrade; remedy|to make something better|melior
 amorphous|formless; shapeless; vague; indefinite; nebulous|lacking a definite shape or structure|morph
 anachronistic|outdated; obsolete; antiquated; archaic; dated|belonging to a different, earlier time|chron
-anathema|abomination; curse; bane; taboo; outcast|something intensely disliked; a curse|-
+anathema|abomination; curse; bane; taboo; outcast|something intensely disliked; a curse|thes
 annex|append; attach; seize; incorporate; add|to add territory or attach something|nex
 antediluvian|antiquated; ancient; old-fashioned; prehistoric; outmoded|very old or old-fashioned; before the flood|dilu
 antithesis|opposite; reverse; contrast; converse; inverse|a direct opposite|thes
 apocryphal|spurious; dubious; fictitious; fabricated; unverified|of doubtful authenticity|crypt
 approbation|approval; sanction; praise; acclaim; endorsement|approval or praise|prob
-arcane|obscure; mysterious; esoteric; recondite; enigmatic|known only to a few; mysterious|-
+arcane|obscure; mysterious; esoteric; recondite; enigmatic|known only to a few; mysterious|arc
 archetypal|classic; typical; model; quintessential; prototypical|serving as a perfect example of a type|typ
 ardent|passionate; fervent; zealous; intense; eager|very enthusiastic or passionate|ard
 artifact|relic; object; antiquity; remnant; creation|an object made by humans, often of historical interest|fact
 artifice|trickery; ruse; ploy; stratagem; craft|clever trickery or a crafty device|fac
-ascetic|austere; self-denying; abstemious; spartan; rigorous|practicing strict self-discipline; austere|-
+ascetic|austere; self-denying; abstemious; spartan; rigorous|practicing strict self-discipline; austere|asc
 aspersion|disparagement; slander; defamation; slur; smear|a damaging or defamatory remark|spers
 assiduous|diligent; industrious; meticulous; persistent; attentive|showing careful and constant attention|sed
 attenuate|diminish; weaken; reduce; dilute; thin|to weaken or reduce in force or degree|ten
-austerity|severity; frugality; sternness; self-denial; strictness|strict, plain, or harsh conditions; frugality|-
-avaricious|greedy; covetous; grasping; acquisitive; rapacious|excessively desiring wealth|-
+austerity|severity; frugality; sternness; self-denial; strictness|strict, plain, or harsh conditions; frugality|auster
+avaricious|greedy; covetous; grasping; acquisitive; rapacious|excessively desiring wealth|avar
 balk|hesitate; recoil; shy away; refuse; falter|to hesitate or refuse to proceed|-
 bedlam|turmoil; chaos; uproar; pandemonium; tumult|a scene of uproar and confusion|-
 beguile|charm; enchant; entice; delude; deceive|to charm or delight; to deceive|-
 benevolent|charitable; kindly; generous; benign; magnanimous|well-meaning and kindly|bene
 besmirch|sully; tarnish; smear; defame; stain|to damage someone's reputation|-
 bigot|fanatic; zealot; partisan; chauvinist; intolerant person|a person intolerant of views other than their own|-
-blandishment|flattery; cajolery; compliment; enticement; wheedling|flattering words used to persuade|-
+blandishment|flattery; cajolery; compliment; enticement; wheedling|flattering words used to persuade|bland
 bogus|counterfeit; fake; phony; sham; spurious|not genuine; fake|-
 boor|oaf; lout; philistine; churl; clod|a rude, unsophisticated person|-
 brittle|fragile; breakable; delicate; frail; crumbly|hard but easily broken|-
@@ -208,11 +270,11 @@ cache|stash; hoard; store; reserve; stockpile|a hidden store of things|-
 cacophony|discord; din; racket; clamor; dissonance|a harsh, jarring mixture of sounds|phon
 cajole|coax; wheedle; persuade; inveigle; sweet-talk|to persuade gently or with flattery|-
 callow|immature; inexperienced; green; naive; raw|young and inexperienced|-
-calumny|slander; libel; defamation; vilification; smear|a false statement meant to damage reputation|-
+calumny|slander; libel; defamation; vilification; smear|a false statement meant to damage reputation|calumn
 candor|frankness; honesty; openness; directness; sincerity|openness and honesty in speech|cand
 cant|hypocrisy; jargon; insincerity; lingo; double-talk|insincere talk; specialized jargon|cant
 capitulate|yield; surrender; submit; concede; give in|to surrender|cap
-capricious|fickle; whimsical; erratic; changeable; impulsive|given to sudden changes of mind|-
+capricious|fickle; whimsical; erratic; changeable; impulsive|given to sudden changes of mind|capr
 carp|complain; nitpick; quibble; grumble; criticize|to find fault or complain persistently|-
 castigate|chastise; rebuke; scold; criticize; reprimand|to criticize harshly|-
 catalyst|stimulus; spur; impetus; instigator; trigger|something that prompts change or action|lys
@@ -232,32 +294,32 @@ concomitant|accompanying; attendant; concurrent; associated; collateral|naturall
 condone|excuse; overlook; pardon; forgive; tolerate|to overlook or forgive an offense|don
 conduit|channel; pipe; passage; medium; conveyor|a pipe or channel that conveys something|duc
 conflagration|blaze; fire; inferno; holocaust; firestorm|a large destructive fire|flagr
-congruity|consistency; harmony; agreement; coherence; compatibility|agreement or harmony between things|-
+congruity|consistency; harmony; agreement; coherence; compatibility|agreement or harmony between things|com
 conjecture|speculation; guess; surmise; supposition; hypothesis|a guess based on incomplete information|ject
 connive|conspire; collude; scheme; plot; abet|to secretly allow or plot wrongdoing|-
-connoisseur|expert; authority; aficionado; buff; judge|an expert judge in matters of taste|gnos
-consternation|dismay; alarm; distress; bewilderment; panic|anxiety or dismay that leaves one confused|-
+connoisseur|expert; authority; aficionado; buff; judge|an expert judge in matters of taste|cogn
+consternation|dismay; alarm; distress; bewilderment; panic|anxiety or dismay that leaves one confused|stern
 constituent|component; element; part; ingredient; voter|a part of a larger whole|stan
 construe|interpret; understand; read; explain; analyze|to interpret or explain the meaning of|stru
 consummate|perfect; complete; accomplished; ideal; flawless|complete and of the highest level|sum
 contravene|violate; contradict; infringe; breach; oppose|to go against or break a rule|ven
-contrite|penitent; remorseful; repentant; regretful; sorry|feeling sorrow for wrongdoing|-
+contrite|penitent; remorseful; repentant; regretful; sorry|feeling sorrow for wrongdoing|trib
 conundrum|riddle; puzzle; enigma; dilemma; paradox|a confusing problem or puzzle|-
 copious|plentiful; abundant; ample; profuse; generous|abundant in quantity|-
-corpulence|obesity; fatness; stoutness; bulk; heftiness|excessive body fat|-
+corpulence|obesity; fatness; stoutness; bulk; heftiness|excessive body fat|corp
 coterie|clique; circle; faction; group; set|an exclusive small group|-
-countenance|face; expression; tolerate; approve; sanction|a face or expression; to tolerate|-
+countenance|face; expression; tolerate; approve; sanction|a face or expression; to tolerate|ten
 coup|overthrow; putsch; revolt; masterstroke; triumph|a sudden seizure of power; a brilliant stroke|-
-crescendo|climax; peak; height; culmination; swell|a gradual increase in loudness; a peak|-
+crescendo|climax; peak; height; culmination; swell|a gradual increase in loudness; a peak|cresc
 culpable|blameworthy; guilty; liable; responsible; at fault|deserving blame or punishment|culp
 cupidity|greed; avarice; covetousness; rapacity; acquisitiveness|excessive desire for wealth|cupid
 decadence|decline; decay; degeneration; dissipation; corruption|moral or cultural decay|cad
-decrepit|dilapidated; worn-out; infirm; feeble; ramshackle|weakened by age or worn out|-
+decrepit|dilapidated; worn-out; infirm; feeble; ramshackle|weakened by age or worn out|crep
 defunct|extinct; obsolete; dead; inoperative; nonexistent|no longer existing or functioning|funct
 deleterious|harmful; injurious; detrimental; damaging; noxious|causing harm|-
-delirious|frenzied; wild; ecstatic; hysterical; feverish|wildly excited; in a state of confusion|-
-deluge|flood; inundation; torrent; overwhelm; downpour|an overwhelming flood or downpour|-
-demagogue|agitator; rabble-rouser; firebrand; populist; instigator|a leader who stirs up popular passions|-
+delirious|frenzied; wild; ecstatic; hysterical; feverish|wildly excited; in a state of confusion|lir
+deluge|flood; inundation; torrent; overwhelm; downpour|an overwhelming flood or downpour|dilu
+demagogue|agitator; rabble-rouser; firebrand; populist; instigator|a leader who stirs up popular passions|ag
 demur|object; hesitate; protest; balk; scruple|to express doubt or objection|-
 denigrate|disparage; belittle; defame; deprecate; vilify|to belittle or defame|nigr
 deride|ridicule; mock; scoff; jeer; taunt|to mock or laugh at scornfully|rid
@@ -266,7 +328,7 @@ dexterity|deftness; skill; adroitness; agility; facility|skill, especially with 
 diaphanous|translucent; sheer; gauzy; filmy; delicate|light, delicate, and almost transparent|phan
 diatribe|harangue; tirade; invective; rant; philippic|a bitter, abusive criticism|trib
 didactic|instructive; educational; pedagogical; informative; preachy|intended to teach|-
-dilettante|amateur; dabbler; hobbyist; tyro; poseur|a person who dabbles in an art without serious study|-
+dilettante|amateur; dabbler; hobbyist; tyro; poseur|a person who dabbles in an art without serious study|delect
 disparate|dissimilar; distinct; unlike; divergent; contrasting|fundamentally different|par
 domicile|residence; home; dwelling; abode; habitation|a place of residence|dom
 dour|gloomy; stern; sullen; grim; severe|stern and unsmiling|-
@@ -274,21 +336,21 @@ drudgery|toil; labor; grind; slavery; tedium|hard, tedious work|-
 duplicity|deceit; deception; double-dealing; treachery; guile|deception through double-dealing|plic
 duress|coercion; compulsion; pressure; force; threat|threats or pressure forcing someone to act|dur
 ebullient|exuberant; buoyant; effervescent; jubilant; vivacious|cheerfully full of energy|bull
-eclectic|wide-ranging; diverse; varied; selective; broad|drawing from diverse sources|leg
+eclectic|wide-ranging; diverse; varied; selective; broad|drawing from diverse sources|lect
 edict|decree; order; ruling; mandate; proclamation|an official order or command|dict
-edifice|structure; building; construction; pile; monument|a large, imposing building|-
+edifice|structure; building; construction; pile; monument|a large, imposing building|fac
 effigy|likeness; image; statue; figure; representation|a crude image or representation of a person|fig
 egalitarian|equitable; democratic; equal; fair; nonhierarchical|believing in equal rights for all|equ
 egregious|outrageous; flagrant; glaring; blatant; shocking|shockingly bad|greg
 elegy|lament; dirge; threnody; requiem; monody|a mournful poem or song for the dead|-
-elicit|evoke; draw out; extract; provoke; obtain|to draw out a response or information|-
+elicit|evoke; draw out; extract; provoke; obtain|to draw out a response or information|lic
 elucidate|clarify; explain; illuminate; interpret; expound|to make clear by explanation|luc
 emaciated|gaunt; skeletal; haggard; thin; wasted|abnormally thin|mac
 embezzlement|theft; misappropriation; fraud; peculation; pilfering|theft of money entrusted to one's care|-
 emollient|soothing; softening; calming; mollifying; balm|softening or soothing|moll
 empirical|experiential; observed; experimental; practical; evidence-based|based on observation or experience|-
 emulate|imitate; copy; mimic; follow; rival|to imitate in order to equal or surpass|-
-encumbrance|burden; load; hindrance; impediment; obstacle|something that hinders or weighs down|-
+encumbrance|burden; load; hindrance; impediment; obstacle|something that hinders or weighs down|cumb
 enervate|exhaust; weaken; sap; drain; fatigue|to drain strength or energy|nerv
 enhance|augment; improve; boost; intensify; heighten|to improve or heighten the quality of|-
 enigma|mystery; puzzle; riddle; conundrum; paradox|something puzzling or hard to understand|-
@@ -300,11 +362,11 @@ epitome|embodiment; quintessence; example; personification; model|a perfect exam
 erudite|scholarly; learned; knowledgeable; well-read; intellectual|having great learning|rud
 eschew|shun; avoid; abstain; forgo; steer clear of|to deliberately avoid|-
 esoteric|cryptic; abstruse; obscure; arcane; recondite|understood by only a small, specialized group|-
-espouse|embrace; adopt; support; champion; advocate|to adopt or support a cause or belief|-
+espouse|embrace; adopt; support; champion; advocate|to adopt or support a cause or belief|spons
 estimable|admirable; worthy; respectable; laudable; commendable|worthy of respect|aest
 eulogy|tribute; panegyric; encomium; homage; accolade|a speech praising someone who has died|log
 euphemism|polite term; softening; understatement; circumlocution; mild expression|a mild word substituted for a harsh one|phem
-evanescence|transience; fading; impermanence; fleetingness; vanishing|the quality of quickly fading away|-
+evanescence|transience; fading; impermanence; fleetingness; vanishing|the quality of quickly fading away|van
 exacting|demanding; rigorous; strict; severe; taxing|making severe demands|ag
 exasperate|infuriate; irritate; annoy; provoke; anger|to irritate intensely|asper
 excruciating|agonizing; torturous; unbearable; intense; acute|causing intense pain|cruc
@@ -313,23 +375,23 @@ exhaustive|thorough; comprehensive; complete; full; all-inclusive|covering every
 expatiate|elaborate; enlarge; expound; dilate; amplify|to speak or write at great length|spat
 expatriate|exile; emigrant; refugee; outcast; displaced person|a person living outside their native country|patr
 expedient|convenient; practical; advantageous; useful; politic|suited to a purpose; practical|ped
-expiate|atone; redeem; make amends; propitiate; compensate|to make amends for wrongdoing|-
+expiate|atone; redeem; make amends; propitiate; compensate|to make amends for wrongdoing|pi
 explicit|unambiguous; clear; definite; direct; unequivocal|stated clearly and directly|plic
 exponent|advocate; champion; proponent; representative; supporter|a person who advocates or represents an idea|pon
 expunge|erase; delete; remove; eradicate; obliterate|to remove completely|pung
 expurgate|censor; bowdlerize; purge; cleanse; edit|to remove objectionable material from text|purg
-extant|surviving; existing; living; remaining; present|still existing|sta
+extant|surviving; existing; living; remaining; present|still existing|stan
 extol|praise; laud; exalt; glorify; applaud|to praise highly|tol
-extraneous|irrelevant; extrinsic; superfluous; external; unrelated|not essential; from outside|-
+extraneous|irrelevant; extrinsic; superfluous; external; unrelated|not essential; from outside|ex
 exult|rejoice; celebrate; delight; triumph; glory|to rejoice greatly|sult
-facetious|jocular; joking; flippant; humorous; playful|joking, often inappropriately|fac
+facetious|jocular; joking; flippant; humorous; playful|joking, often inappropriately|-
 facile|effortless; easy; superficial; glib; simplistic|achieved with little effort; superficial|fac
 facilitate|ease; aid; expedite; assist; further|to make a process easier|fac
 fanciful|imaginative; whimsical; fantastic; capricious; unreal|existing mainly in imagination|-
 fathom|comprehend; understand; grasp; plumb; penetrate|to understand deeply|-
 fatuous|foolish; silly; inane; vacuous; idiotic|silly and self-satisfied|-
-feasible|practicable; possible; workable; viable; doable|possible to do|-
-felicitous|apt; fitting; appropriate; well-chosen; happy|well suited to the circumstances|-
+feasible|practicable; possible; workable; viable; doable|possible to do|fac
+felicitous|apt; fitting; appropriate; well-chosen; happy|well suited to the circumstances|fel
 fetter|shackle; chain; manacle; restrain; hamper|a chain for the feet; to restrain|-
 flat|dull; monotonous; insipid; lifeless; tedious|lacking interest or liveliness|-
 fidelity|loyalty; faithfulness; allegiance; devotion; accuracy|faithfulness|fid
@@ -339,13 +401,13 @@ flag|wilt; droop; weaken; languish; fade|to grow weak or droop|-
 flagrant|blatant; glaring; obvious; conspicuous; scandalous|openly and obviously offensive|flagr
 fleeting|brief; transient; momentary; short-lived; passing|lasting only a short time|-
 foible|quirk; weakness; idiosyncrasy; peculiarity; failing|a minor weakness or eccentricity|-
-foment|incite; stir up; provoke; instigate; agitate|to stir up trouble|-
+foment|incite; stir up; provoke; instigate; agitate|to stir up trouble|fov
 forbearance|tolerance; patience; restraint; self-control; leniency|patient self-restraint|-
 foreshadow|portend; presage; herald; augur; prefigure|to be a sign of something to come|-
 forfeit|relinquish; surrender; lose; sacrifice; give up|to lose something as a penalty|-
-fortify|reinforce; strengthen; bolster; buttress; invigorate|to strengthen|-
+fortify|reinforce; strengthen; bolster; buttress; invigorate|to strengthen|fort
 fortuitous|accidental; chance; coincidental; lucky; serendipitous|happening by chance|-
-fractious|unruly; irritable; cantankerous; rebellious; disorderly|difficult to control; irritable|frag
+fractious|unruly; irritable; cantankerous; rebellious; disorderly|difficult to control; irritable|frac
 fray|unravel; wear thin; ravel; tatter; brawl|to wear thin; to come apart|-
 fringe|edge; border; margin; periphery; boundary|a border or outer edge|-
 frugal|thrifty; economical; sparing; prudent; austere|economical with money or resources|frug
@@ -361,7 +423,7 @@ glib|slick; smooth; facile; superficial; flippant|fluent but insincere or superf
 goosebumps|gooseflesh; goose pimples; horripilation; shivers; prickles|small bumps on the skin from cold or fear|-
 gourmand|epicure; gastronome; glutton; bon vivant; connoisseur|a person who loves good food|-
 gradation|progression; stage; step; degree; sequence|a gradual progress through stages|grad
-grandiloquent|bombastic; pompous; grandiose; flowery; high-flown|using pompous language|loqu
+grandiloquent|bombastic; pompous; grandiose; flowery; high-flown|using pompous language|grand
 gratuitous|unwarranted; unnecessary; uncalled-for; free; baseless|unnecessary, without justification|grat
 happy-go-lucky|carefree; easygoing; nonchalant; blithe; relaxed|cheerfully unconcerned|-
 harbinger|herald; forerunner; precursor; omen; sign|a sign or forerunner of something|-
@@ -378,14 +440,14 @@ hodgepodge|jumble; mishmash; medley; mixture; potpourri|a confused mixture|-
 homogeneous|uniform; similar; alike; consistent; identical|of the same kind throughout|homo
 homogenous|uniform; similar; alike; consistent; identical|of the same kind throughout|homo
 hyperbole|exaggeration; overstatement; magnification; extravagance; amplification|deliberate and extreme exaggeration|hyper
-iconoclast|nonconformist; dissenter; rebel; heretic; maverick|a person who attacks traditional beliefs|clast
+iconoclast|nonconformist; dissenter; rebel; heretic; maverick|a person who attacks traditional beliefs|-
 idiosyncrasy|peculiarity; quirk; eccentricity; oddity; foible|a distinctive personal quirk|idio
 idyllic|pastoral; blissful; peaceful; picturesque; heavenly|extremely happy and peaceful|-
-ignominious|disgraceful; shameful; humiliating; dishonorable; infamous|deserving public shame|-
+ignominious|disgraceful; shameful; humiliating; dishonorable; infamous|deserving public shame|nomen
 ilk|kind; sort; type; variety; class|a sort or type|-
 illiberality|narrow-mindedness; intolerance; bigotry; prejudice; parochialism|intolerance of different views|liber
-imminent|impending; approaching; near; forthcoming; looming|about to happen|-
-impair|damage; weaken; harm; hamper; diminish|to weaken or harm|par
+imminent|impending; approaching; near; forthcoming; looming|about to happen|min
+impair|damage; weaken; harm; hamper; diminish|to weaken or harm|-
 impeach|indict; accuse; charge; censure; arraign|to charge a public official with misconduct|-
 importune|pester; beg; implore; solicit; badger|to beg or urge persistently|-
 impresario|producer; manager; promoter; director; organizer|a person who organizes public performances|-
@@ -393,11 +455,11 @@ impute|attribute; ascribe; assign; credit; blame|to credit or blame someone for 
 inane|senseless; silly; vacuous; empty; foolish|silly and without meaning|-
 incendiary|inflammatory; provocative; seditious; rabble-rousing; combustible|tending to provoke violence or conflict|cend
 inchoate|rudimentary; embryonic; undeveloped; incipient; elementary|just begun and not fully formed|-
-incongruous|incompatible; inconsistent; out of place; unsuitable; discordant|out of place; not in harmony|-
+incongruous|incompatible; inconsistent; out of place; unsuitable; discordant|out of place; not in harmony|com
 incontrovertible|indisputable; undeniable; certain; irrefutable; unquestionable|too clear to be denied|vert
 incorrigibility|hopelessness; intractability; irredeemability; obstinacy; unruliness|being impossible to correct|-
 incumbent|obligatory; mandatory; required; current; sitting|required as a duty; a current office holder|cumb
-indoctrinate|brainwash; instill; indoctrinate; condition; teach|to teach a belief uncritically|doc
+indoctrinate|brainwash; instill; condition; teach|to teach a belief uncritically|doc
 indolent|lazy; idle; slothful; lethargic; sluggish|averse to work or effort|dol
 inebriated|intoxicated; drunk; tipsy; sloshed; besotted|drunk|ebri
 inert|inactive; motionless; passive; lifeless; sluggish|lacking the ability to move or act|-
@@ -412,34 +474,34 @@ insidious|treacherous; sly; stealthy; subtle; pernicious|harmful in a gradual, h
 insouciant|nonchalant; carefree; blithe; unconcerned; indifferent|carefree and unconcerned|-
 instigate|provoke; incite; initiate; spark; foment|to initiate or incite an action|-
 interlocutor|conversationalist; speaker; dialogue partner; participant; discussant|a person who takes part in a dialogue|loqu
-internecine|internal; mutually destructive; intestine; civil; domestic|mutually destructive, within a group|-
+internecine|internal; mutually destructive; intestine; civil; domestic|mutually destructive, within a group|nec
 intimation|hint; suggestion; implication; insinuation; clue|a slight indication|-
 intractable|stubborn; unmanageable; obstinate; unruly; recalcitrant|hard to control or manage|tract
 intransigent|obstinate; uncompromising; inflexible; adamant; unyielding|refusing to change one's views|-
 invective|abuse; vituperation; insult; denunciation; diatribe|insulting, abusive language|vect
-inveterate|habitual; chronic; confirmed; ingrained; hardened|long-established; habitual|-
+inveterate|habitual; chronic; confirmed; ingrained; hardened|long-established; habitual|veter
 invigorate|energize; animate; revitalize; refresh; enliven|to give strength and energy to|vig
 inviolable|untouchable; sacred; sacrosanct; inviolate; secure|never to be violated|viol
-irascible|irritable; testy; choleric; grumpy; touchy|easily angered|-
-irresolute|indecisive; hesitant; vacillating; wavering; undecided|unable to make up one's mind|-
+irascible|irritable; testy; choleric; grumpy; touchy|easily angered|ir
+irresolute|indecisive; hesitant; vacillating; wavering; undecided|unable to make up one's mind|solv
 irreverence|disrespect; impiety; flippancy; insolence; mockery|lack of proper respect|-
-itinerant|wandering; roving; traveling; nomadic; peripatetic|traveling from place to place|-
+itinerant|wandering; roving; traveling; nomadic; peripatetic|traveling from place to place|iter
 jettison|discard; dump; scrap; eject; abandon|to throw away|ject
 juxtapose|contrast; compare; place side by side; pair; collocate|to place side by side for effect|pos
 kindle|ignite; light; arouse; inflame; spark|to set on fire; to arouse|-
 knell|toll; peal; death knell; sign; tolling|the sound of a bell rung for a death|-
 labyrinth|maze; warren; web; network; tangle|a complicated network of passages|-
-laceration|gash; cut; wound; slash; tear|a deep, torn cut|-
+laceration|gash; cut; wound; slash; tear|a deep, torn cut|lacer
 laconic|terse; brief; succinct; concise; curt|using few words|-
 lampoon|satirize; ridicule; parody; mock; caricature|to mock with satire|-
-languor|lethargy; listlessness; torpor; lassitude; inertia|a pleasant lack of energy|-
-largesse|generosity; benevolence; bounty; liberality; munificence|generous giving|-
-lassitude|weariness; fatigue; exhaustion; languor; lethargy|physical or mental tiredness|-
+languor|lethargy; listlessness; torpor; lassitude; inertia|a pleasant lack of energy|lang
+largesse|generosity; benevolence; bounty; liberality; munificence|generous giving|larg
+lassitude|weariness; fatigue; exhaustion; languor; lethargy|physical or mental tiredness|lass
 latent|dormant; hidden; potential; concealed; undeveloped|present but not yet active|lat
 laud|acclaim; praise; extol; commend; applaud|to praise highly|laud
 levity|frivolity; humor; flippancy; lightheartedness; buoyancy|lightheartedness; humor|lev
-levy|impose; collect; exact; assess; conscript|to impose or collect a tax|lev
-liability|responsibility; obligation; drawback; disadvantage; hindrance|a legal obligation; a drawback|-
+levy|impose; collect; exact; assess; conscript|to impose or collect a tax|-
+liability|responsibility; obligation; drawback; disadvantage; hindrance|a legal obligation; a drawback|lig
 libertarian|individualist; freethinker; liberal; independent; advocate of freedom|a believer in personal liberty|liber
 libertine|debauchee; rake; profligate; hedonist; roué|a person without moral restraint|liber
 linchpin|keystone; mainstay; cornerstone; crux; pivot|a crucial element that holds things together|-
@@ -447,11 +509,11 @@ lithe|supple; agile; limber; lissome; graceful|flexible and graceful|-
 loquacious|talkative; garrulous; voluble; chatty; verbose|very talkative|loqu
 lucid|clear; coherent; intelligible; articulate; transparent|easy to understand; mentally clear|luc
 maelstrom|whirlpool; vortex; turmoil; tumult; chaos|a turbulent whirlpool; a state of confusion|-
-malleable|pliable; flexible; adaptable; ductile; supple|easily shaped or influenced|-
+malleable|pliable; flexible; adaptable; ductile; supple|easily shaped or influenced|mall
 masticate|chew; munch; grind; crunch; champ|to chew food|-
 maudlin|sentimental; mawkish; tearful; mushy; lachrymose|tearfully or excessively sentimental|-
 maverick|independent; nonconformist; loner; rebel; eccentric|an independent-minded person who defies convention|-
-mendacious|dishonest; lying; deceitful; untruthful; false|untruthful|-
+mendacious|dishonest; lying; deceitful; untruthful; false|untruthful|mend
 mercurial|volatile; capricious; temperamental; fickle; changeable|subject to sudden changes of mood|-
 metamorphosis|transformation; change; conversion; mutation; transfiguration|a complete change in form or character|morph
 modicum|small amount; bit; trace; iota; scrap|a small quantity|mod
@@ -459,42 +521,42 @@ morass|quagmire; swamp; mire; bog; tangle|a swamp; a confusing situation|-
 mores|customs; norms; conventions; traditions; folkways|the accepted customs of a society|mor
 moribund|dying; declining; failing; obsolescent; expiring|near death; declining|mor
 multifarious|manifold; diverse; varied; myriad; multitudinous|many and varied|-
-munificent|generous; bountiful; lavish; liberal; openhanded|very generous|-
+munificent|generous; bountiful; lavish; liberal; openhanded|very generous|mun
 nadir|bottom; low point; depth; rock bottom; trough|the lowest point|-
-nascent|emerging; budding; developing; incipient; embryonic|just coming into existence|-
-nefarious|wicked; evil; heinous; villainous; iniquitous|extremely evil|-
-neophyte|newcomer; novice; beginner; tyro; apprentice|a beginner|-
-nepotism|favoritism; patronage; cronyism; partiality; bias|favoring relatives in appointments|-
-notoriety|infamy; disrepute; ill repute; scandal; dishonor|the state of being famous for bad reasons|-
+nascent|emerging; budding; developing; incipient; embryonic|just coming into existence|nasc
+nefarious|wicked; evil; heinous; villainous; iniquitous|extremely evil|fas
+neophyte|newcomer; novice; beginner; tyro; apprentice|a beginner|neo
+nepotism|favoritism; patronage; cronyism; partiality; bias|favoring relatives in appointments|nep
+notoriety|infamy; disrepute; ill repute; scandal; dishonor|the state of being famous for bad reasons|not
 obdurate|unyielding; stubborn; inflexible; intransigent; adamant|stubbornly refusing to change|dur
-obfuscate|confuse; obscure; cloud; muddle; befog|to make unclear or confusing|-
+obfuscate|confuse; obscure; cloud; muddle; befog|to make unclear or confusing|fusc
 obsequious|servile; fawning; sycophantic; obedient; subservient|excessively eager to obey or please|sequ
 obstreperous|rowdy; unruly; noisy; boisterous; disorderly|noisy and difficult to control|strep
-obviate|avert; prevent; preclude; forestall; eliminate|to prevent or make unnecessary|-
-occult|mystical; supernatural; arcane; esoteric; magical|relating to hidden or supernatural forces|-
-onerous|burdensome; heavy; oppressive; taxing; demanding|heavy and difficult to bear|-
-opaque|impenetrable; murky; cloudy; obscure; unclear|not transparent; hard to understand|-
+obviate|avert; prevent; preclude; forestall; eliminate|to prevent or make unnecessary|via
+occult|mystical; supernatural; arcane; esoteric; magical|relating to hidden or supernatural forces|crypt
+onerous|burdensome; heavy; oppressive; taxing; demanding|heavy and difficult to bear|oner
+opaque|impenetrable; murky; cloudy; obscure; unclear|not transparent; hard to understand|opac
 opprobrium|disgrace; ignominy; infamy; disrepute; scorn|public disapproval or shame|-
 orthodox|conventional; traditional; standard; accepted; mainstream|conforming to accepted belief|dox
-ostentatious|showy; flashy; pretentious; garish; flamboyant|intended to impress through display|-
+ostentatious|showy; flashy; pretentious; garish; flamboyant|intended to impress through display|phan
 ostracism|banishment; exclusion; shunning; expulsion; rejection|exclusion from a group|-
-palliate|mitigate; alleviate; ease; soften; moderate|to relieve without curing|-
+palliate|mitigate; alleviate; ease; soften; moderate|to relieve without curing|pall
 panacea|cure-all; universal remedy; elixir; nostrum; catholicon|a remedy for all ills|-
 pandemonium|uproar; chaos; tumult; mayhem; turmoil|wild, noisy disorder|-
-parable|allegory; fable; story; lesson; moral tale|a short story conveying a moral|bol
+parable|allegory; fable; story; lesson; moral tale|a short story conveying a moral|-
 paradigm|model; pattern; example; standard; exemplar|a typical example or pattern|-
-paradox|contradiction; enigma; anomaly; puzzle; absurdity|a statement that seems contradictory yet is true|dox
+paradox|contradiction; enigma; anomaly; puzzle; absurdity|a statement that seems contradictory yet is true|-
 paragon|exemplar; model; epitome; ideal; standard|a model of excellence|-
 pariah|outcast; exile; untouchable; leper; reject|a person rejected by society|-
-parsimonious|stingy; miserly; frugal; thrifty; niggardly|unwilling to spend money|-
-patent|evident; obvious; clear; plain; manifest|clearly obvious|-
-pathological|compulsive; chronic; morbid; abnormal; diseased|relating to disease; compulsive|-
-paucity|scarcity; lack; shortage; dearth; insufficiency|a small amount|-
-pecuniary|monetary; financial; fiscal; economic; material|relating to money|-
-pejorative|derogatory; disparaging; belittling; negative; insulting|expressing disapproval|-
-penchant|inclination; liking; propensity; fondness; predilection|a strong liking|-
-penurious|destitute; impoverished; poor; stingy; miserly|extremely poor; stingy|-
-peregrination|wandering; travel; journey; roaming; odyssey|a journey from place to place|-
+parsimonious|stingy; miserly; frugal; thrifty; niggardly|unwilling to spend money|parc
+patent|evident; obvious; clear; plain; manifest|clearly obvious|pat
+pathological|compulsive; chronic; morbid; abnormal; diseased|relating to disease; compulsive|path
+paucity|scarcity; lack; shortage; dearth; insufficiency|a small amount|pauc
+pecuniary|monetary; financial; fiscal; economic; material|relating to money|pecu
+pejorative|derogatory; disparaging; belittling; negative; insulting|expressing disapproval|pejor
+penchant|inclination; liking; propensity; fondness; predilection|a strong liking|clin
+penurious|destitute; impoverished; poor; stingy; miserly|extremely poor; stingy|penur
+peregrination|wandering; travel; journey; roaming; odyssey|a journey from place to place|peregr
 perfidious|treacherous; disloyal; faithless; deceitful; traitorous|deceitful and disloyal|fid
 perfunctory|cursory; superficial; careless; mechanical; routine|done with minimal effort|funct
 pernicious|injurious; harmful; destructive; deadly; detrimental|causing harm, often gradually|nec
@@ -502,7 +564,7 @@ perspicacious|perceptive; discerning; astute; shrewd; penetrating|quick to notic
 pert|impudent; cheeky; saucy; brazen; bold|bold and cheeky|-
 perturbed|agitated; disturbed; anxious; troubled; worried|anxious and disturbed|turb
 peruse|study; scan; examine; read carefully; scrutinize|to read carefully|-
-philanthropic|charitable; benevolent; generous; humanitarian; altruistic|generous toward others|-
+philanthropic|charitable; benevolent; generous; humanitarian; altruistic|generous toward others|phil
 phlegmatic|unemotional; impassive; stoical; calm; apathetic|calm and not easily excited|-
 pithy|pointed; concise; terse; succinct; sententious|brief and full of meaning|-
 placate|appease; pacify; mollify; conciliate; soothe|to calm someone's anger|plac
@@ -513,7 +575,7 @@ plenitude|abundance; plenty; wealth; profusion; fullness|a full supply|plen
 plethora|glut; excess; surplus; surfeit; superabundance|an excess|-
 polarized|divided; split; opposed; sharply separated; partisan|split into opposing extremes|-
 ponderous|unwieldy; heavy; clumsy; cumbersome; labored|heavy and slow|pond
-portent|omen; sign; warning; premonition; augury|a sign of something to come|-
+portent|omen; sign; warning; premonition; augury|a sign of something to come|tend
 posthumous|postmortem; after death; afterward; subsequent; following death|occurring after death|-
 potentate|ruler; monarch; sovereign; dictator; magnate|a ruler with great power|pot
 precipitate|hasten; trigger; accelerate; provoke; bring about|to cause something to happen suddenly|-
@@ -525,7 +587,7 @@ prelude|introduction; preface; prologue; overture; opening|an introductory event
 premonition|foreboding; forewarning; presentiment; hunch; omen|a feeling that something will happen|mon
 preponderance|majority; bulk; dominance; superiority; excess|a greater number or weight|pond
 presage|forecast; foreshadow; portend; herald; predict|to foreshadow|sag
-prevaricate|equivocate; lie; dodge; hedge; fudge|to speak evasively or lie|-
+prevaricate|equivocate; lie; dodge; hedge; fudge|to speak evasively or lie|var
 pristine|untouched; pure; unspoiled; immaculate; original|in its original, unspoiled state|-
 privation|hardship; deprivation; want; poverty; need|lack of basic necessities|priv
 probation|trial; test; provisional period; supervision; parole|a trial period|prob
@@ -536,27 +598,27 @@ profuse|lavish; abundant; copious; plentiful; generous|abundant|fus
 progeny|offspring; children; descendants; issue; heirs|children or descendants|gen
 proliferate|multiply; increase; spread; burgeon; mushroom|to increase rapidly|fer
 promulgate|proclaim; announce; publish; declare; disseminate|to make known publicly|-
-propitious|auspicious; favorable; promising; opportune; timely|favorable|-
-prosaic|mundane; dull; ordinary; humdrum; commonplace|dull and ordinary|vers
+propitious|auspicious; favorable; promising; opportune; timely|favorable|pi
+prosaic|mundane; dull; ordinary; humdrum; commonplace|dull and ordinary|-
 proscribe|prohibit; ban; forbid; outlaw; bar|to forbid|scrib
-puerile|childish; juvenile; immature; infantile; silly|silly and immature|-
+puerile|childish; juvenile; immature; infantile; silly|silly and immature|puer
 pugnacious|combative; belligerent; aggressive; quarrelsome; bellicose|eager to fight|pugn
 punctilious|meticulous; scrupulous; careful; exact; precise|attentive to every detail|punct
 quandary|dilemma; predicament; plight; bind; difficulty|a state of difficult uncertainty|-
 quibble|cavil; nitpick; carp; split hairs; wrangle|a trivial argument|-
 quixotic|impractical; idealistic; romantic; unrealistic; visionary|unrealistically idealistic|-
-quotidian|everyday; daily; routine; ordinary; commonplace|ordinary, daily|-
-rabid|fanatical; zealous; furious; extreme; frenzied|extremely enthusiastic; furious|-
+quotidian|everyday; daily; routine; ordinary; commonplace|ordinary, daily|quot
+rabid|fanatical; zealous; furious; extreme; frenzied|extremely enthusiastic; furious|rab
 raiment|attire; apparel; clothing; garb; dress|clothing|-
 recalcitrant|defiant; obstinate; unruly; refractory; headstrong|stubbornly resistant to authority|calc
 recant|retract; withdraw; disavow; renounce; repudiate|to take back a statement|cant
 recondite|abstruse; obscure; arcane; esoteric; profound|little known and difficult to understand|-
 redolent|reminiscent; evocative; suggestive; fragrant; aromatic|strongly suggestive of|olent
-redoubtable|formidable; fearsome; daunting; awesome; intimidating|inspiring fear or respect|-
+redoubtable|formidable; fearsome; daunting; awesome; intimidating|inspiring fear or respect|dub
 relegate|demote; downgrade; consign; banish; assign|to assign to a lower position|leg
-remiss|negligent; careless; lax; neglectful; derelict|careless in one's duty|-
+remiss|negligent; careless; lax; neglectful; derelict|careless in one's duty|mit
 repertoire|collection; range; repertory; stock; catalog|a stock of skills or pieces|-
-repose|rest; relaxation; calm; tranquility; leisure|a state of rest|pos
+repose|rest; relaxation; calm; tranquility; leisure|a state of rest|-
 reprobate|scoundrel; rogue; wretch; villain; degenerate|a person of immoral character|prob
 repudiate|reject; disown; renounce; disavow; deny|to refuse to accept|pud
 requisition|demand; request; claim; order; appropriation|a formal demand|-
@@ -576,7 +638,7 @@ savor|relish; enjoy; appreciate; taste; delight in|to enjoy fully|-
 scathing|withering; scorching; caustic; acerbic; harsh|sharply critical|-
 schism|split; division; rift; breach; separation|a division in a group|-
 scurrilous|vulgar; abusive; coarse; obscene; insulting|abusive and offensive|-
-secular|worldly; temporal; lay; nonreligious; earthly|not connected with religion|-
+secular|worldly; temporal; lay; nonreligious; earthly|not connected with religion|secul
 sedulous|industrious; diligent; assiduous; persevering; painstaking|diligent and persistent|sed
 sentient|conscious; aware; perceptive; sensitive; feeling|able to perceive and feel|sent
 serendipity|luck; chance; fortune; providence; happenstance|finding good things by chance|-
@@ -594,7 +656,7 @@ spectrum|range; scope; array; gamut; continuum|a broad range of possibilities|sp
 sportive|playful; frisky; lively; frolicsome; jovial|playful|-
 stoical|unflinching; patient; impassive; stolid; resigned|enduring pain without complaint|-
 stolid|impassive; phlegmatic; unemotional; dull; apathetic|showing little emotion|-
-strident|shrill; harsh; grating; raucous; jarring|harsh and loud|-
+strident|shrill; harsh; grating; raucous; jarring|harsh and loud|strid
 stymie|hinder; thwart; obstruct; impede; frustrate|to obstruct or prevent|-
 subterfuge|deception; ruse; trick; evasion; pretext|a trick used to hide the truth|fug
 succinct|concise; brief; terse; compact; pithy|briefly and clearly expressed|-
@@ -602,7 +664,7 @@ supercilious|haughty; arrogant; condescending; disdainful; snobbish|arrogantly d
 supine|passive; lethargic; inert; prone; recumbent|lying on the back; inactive|-
 supplicate|beseech; entreat; implore; petition; plead|to ask humbly and earnestly|plic
 surfeit|excess; surplus; glut; overabundance; superfluity|an excessive amount|-
-surmise|suppose; guess; conjecture; infer; presume|to infer or guess|mis
+surmise|suppose; guess; conjecture; infer; presume|to infer or guess|-
 surreptitious|clandestine; secret; covert; furtive; stealthy|done in secret|rept
 swarthy|dusky; dark; tanned; olive; brown|having a dark complexion|-
 synchronous|simultaneous; concurrent; coincident; contemporaneous; coordinated|happening at the same time|chron
@@ -612,11 +674,11 @@ tantamount|equivalent; equal; commensurate; synonymous; comparable|equal in effe
 temerity|audacity; boldness; recklessness; nerve; impudence|reckless boldness|-
 tenable|defensible; sustainable; viable; justifiable; plausible|able to be maintained against attack|ten
 tenuous|flimsy; weak; slender; thin; fragile|weak or thin|ten
-terra|earth; land; ground; soil; world|the earth; land|-
+terra|earth; land; ground; soil; world|the earth; land|terr
 timorous|timid; fearful; shy; faint-hearted; cowardly|fearful and shy|tim
 tirade|harangue; diatribe; rant; invective; outburst|a long, angry speech|-
 toady|sycophant; flatterer; lickspittle; yes-man; fawner|a servile flatterer|-
-tome|volume; book; tome; opus; treatise|a large, heavy book|tom
+tome|volume; book; opus; treatise|a large, heavy book|tom
 torpid|sluggish; inactive; lethargic; dormant; listless|inactive or sluggish|torp
 torrid|scorching; blazing; sweltering; passionate; sultry|very hot; passionate|torr
 tractable|docile; manageable; compliant; amenable; pliant|easy to manage|tract
@@ -625,15 +687,15 @@ trenchant|incisive; sharp; keen; cutting; penetrating|sharp and forceful|-
 truculent|belligerent; aggressive; hostile; combative; pugnacious|defiantly aggressive|truc
 turpitude|depravity; wickedness; vileness; corruption; baseness|moral corruption|-
 tyro|novice; beginner; apprentice; neophyte; learner|a beginner|-
-ubiquitous|omnipresent; pervasive; universal; everywhere; widespread|found everywhere|-
+ubiquitous|omnipresent; pervasive; universal; everywhere; widespread|found everywhere|ubi
 umbrage|offense; resentment; indignation; pique; annoyance|a feeling of being offended|umbr
 unctuous|fawning; oily; obsequious; smarmy; slimy|excessively flattering|unct
 untenable|indefensible; unsustainable; unjustifiable; unworkable; insupportable|unable to be defended|ten
-unveiling|revelation; disclosure; launch; exposure; debut|the act of revealing|-
+unveiling|revelation; disclosure; launch; exposure; debut|the act of revealing|vel
 upbraid|scold; reprimand; rebuke; berate; chide|to reprimand|-
 urbane|suave; sophisticated; polished; cosmopolitan; refined|polished and sophisticated|urb
-utilitarian|practical; functional; useful; pragmatic; utilitarian|designed for use rather than beauty|util
-vacillate|waver; hesitate; dither; oscillate; fluctuate|to alternate between opinions|-
+utilitarian|practical; functional; useful; pragmatic|designed for use rather than beauty|util
+vacillate|waver; hesitate; dither; oscillate; fluctuate|to alternate between opinions|var
 vapid|insipid; dull; bland; flat; banal|dull and lacking liveliness|-
 vehement|forceful; fervent; passionate; ardent; emphatic|marked by strong feeling|-
 veneer|facade; front; gloss; pretense; surface|a superficial appearance|-
@@ -641,7 +703,7 @@ venerate|revere; worship; honor; admire; respect|to regard with deep respect|-
 veracity|truthfulness; honesty; accuracy; candor; sincerity|accuracy and honesty|ver
 verbose|wordy; long-winded; prolix; garrulous; loquacious|using more words than needed|verb
 verve|enthusiasm; vigor; zest; energy; spirit|vigor and enthusiasm|-
-vestige|trace; remnant; relic; sign; hint|a remaining trace|-
+vestige|trace; remnant; relic; sign; hint|a remaining trace|vestig
 vexatious|irksome; annoying; troublesome; bothersome; irritating|causing annoyance|vex
 vicissitudes|fluctuations; changes; ups and downs; mutations; reversals|changes of fortune|-
 virtuoso|maestro; master; expert; genius; ace|a highly skilled performer|virt
@@ -656,9 +718,10 @@ whet|stimulate; sharpen; arouse; kindle; excite|to sharpen an appetite or intere
 wily|crafty; sly; cunning; shrewd; artful|skilled at deception|-
 wistful|yearning; longing; nostalgic; melancholy; pensive|longing with a sense of sadness|-
 yen|craving; longing; desire; hankering; hunger|a strong desire|-
-yoke|bondage; burden; subjugation; servitude; link|a bond or burden|-
+yoke|bondage; burden; subjugation; servitude; link|a bond or burden|jug
 zealous|fervent; ardent; eager; passionate; devoted|full of enthusiasm|-
-zephyr|breeze; gust; wind; draft; puff|a gentle breeze|-`;
+zephyr|breeze; gust; wind; draft; puff|a gentle breeze|-
+`;
 
 const EX_RAW = `
 abject|Stripped of his property and his friends, the exiled nobleman lived in abject misery at the edge of the city.
@@ -1675,10 +1738,514 @@ function uniqCI(list) {
   for (const x of list) { const k = x.toLowerCase(); if (!seen.has(k)) { seen.add(k); out.push(x); } }
   return out;
 }
+const DIST_RAW = `abject|insolent;lofty;slavish
+abjure|affirm;embrace;endorse
+abnegation|indulgence;greed;appetite
+abrogate|enact;reinforce;reaffirm
+abstemious|gluttonous;lavish;indulgent
+accost|evade;ignore;avoid
+acumen|dullness;confusion;ignorance
+adulterate|purify;refine;cleanse
+adumbrate|reveal;conceal;deny
+aggrandize|diminish;humble;reduce
+alacrity|reluctance;sluggishness;dread
+alias|identity;title;instigator
+alleviate|aggravate;worsen;intensify
+allude|state;declare;specify
+altruistic|selfish;greedy;mercenary
+ameliorate|worsen;aggravate;deteriorate
+amorphous|precise;defined;shapely
+anachronistic|modern;current;contemporary
+anathema|blessing;treasure;favorite
+annex|surrender;relinquish;cede
+antediluvian|modern;futuristic;novel
+antithesis|embodiment;replica;euphemism
+apocryphal|authentic;verifiable;proven
+approbation|scorn;disdain;criticism
+arcane|obvious;simple;plain
+archetypal|atypical;unusual;rare
+ardent|apathetic;indifferent;bored
+artifact|fabrication;forgery;hoax
+artifice|candor;honesty;frankness
+ascetic|hedonist;glutton;voluptuary
+aspersion|praise;tribute;compliment
+assiduous|lazy;careless;negligent
+attenuate|intensify;amplify;magnify
+austerity|luxury;abundance;opulence
+avaricious|generous;charitable;giving
+balk|accept;embrace;welcome
+bedlam|calm;serenity;tranquility
+beguile|repel;alienate;offend
+benevolent|malicious;spiteful;hostile
+besmirch|exalt;honor;glorify
+bigot|egalitarian;liberal;tolerant
+blandishment|rebuke;threat;reprimand
+bogus|genuine;authentic;real
+boor|gentleman;diplomat;aristocrat
+brittle|flexible;supple;pliant
+bulwark|weakness;vulnerability;opening
+burgeon|wither;decline;shrivel
+buttress|undermine;weaken;erode
+cache|display;exhibit;disclose
+cacophony|harmony;melody;euphony
+cajole|command;order;threaten
+callow|mature;sophisticated;seasoned
+calumny|praise;commendation;tribute
+candor|deceit;evasion;guile
+cant|sincerity;plainness;directness
+capitulate|resist;repel;defy
+capricious|steady;consistent;predictable
+carp|praise;applaud;commend
+castigate|praise;commend;applaud
+catalyst|deterrent;hindrance;obstacle
+celerity|sluggishness;delay;tardiness
+chagrin|delight;pleasure;gratification
+chauvinism|humility;modesty;tolerance
+chimerical|realistic;feasible;practical
+circumlocution|directness;brevity;candor
+circumvent|confront;obey;heed
+cogent|feeble;unconvincing;weak
+cognizant|oblivious;unaware;ignorant
+comely|hideous;unsightly;homely
+commodious|cramped;confined;tight
+compunction|indifference;unconcern;callousness
+concoction|original;natural;pure
+concomitant|isolated;unrelated;separate
+condone|censure;denounce;approval
+conduit|barrier;obstruction;blockade
+conflagration|drizzle;trickle;extinguishing
+congruity|discord;disparity;incongruity
+conjecture|verify;confirm;demonstrate
+connive|deter;oppose;hinder
+connoisseur|novice;layman;amateur
+consternation|composure;calm;serenity
+constituent|irrelevant;extraneous;foreign
+construe|misread;overlook;ignore
+consummate|incomplete;inferior;poor
+contravene|uphold;observe;obey
+contrite|defiant;unrepentant;smug
+conundrum|answer;solution;resolution
+copious|scarce;meager;sparse
+corpulence|slimness;leanness;gauntness
+coterie|multitude;throng;mob
+countenance|reject;refuse;forbid
+coup|failure;defeat;debacle
+crescendo|decrescendo;lull;diminuendo
+culpable|innocent;blameless;faultless
+cupidity|generosity;restraint;altruism
+decadence|virtue;restraint;discipline
+decrepit|robust;sturdy;vigorous
+defunct|operative;active;thriving
+deleterious|beneficial;salutary;wholesome
+delirious|lucid;rational;composed
+deluge|trickle;drizzle;dribble
+demagogue|statesman;moderate;reformer
+demur|consent;agree;accept
+denigrate|praise;exalt;extol
+deride|praise;admire;esteem
+desultory|purposeful;focused;methodical
+dexterity|clumsiness;ineptitude;awkwardness
+diaphanous|opaque;dense;heavy
+diatribe|eulogy;panegyric;encomium
+didactic|frivolous;whimsical;lighthearted
+dilettante|expert;specialist;master
+disparate|similar;alike;homogeneous
+domicile|workplace;office;station
+dour|cheerful;jovial;sunny
+drudgery|leisure;recreation;ease
+duplicity|honesty;sincerity;candor
+duress|freedom;liberty;ease
+ebullient|listless;subdued;glum
+eclectic|uniform;narrow;manifold
+edict|petition;suggestion;request
+edifice|ruin;wreck;remnant
+effigy|original;prototype;exemplar
+egalitarian|hierarchical;elitist;autocratic
+egregious|minor;trivial;slight
+elegy|ode;paean;panegyric
+elicit|suppress;hide;conceal
+elucidate|obscure;muddle;confuse
+emaciated|plump;bloated;corpulent
+embezzlement|restitution;repayment;honesty
+emollient|irritant;astringent;caustic
+empirical|speculative;theoretical;abstract
+emulate|ignore;neglect;disdain
+encumbrance|asset;benefit;boon
+enervate|invigorate;stimulate;foretaste
+enhance|diminish;impair;reduce
+enigma|clarity;transparency;certainty
+ennui|enthusiasm;excitement;zest
+entourage|loner;hermit;recluse
+enunciate|mumble;slur;stammer
+ephemeral|lasting;permanent;enduring
+epitome|antithesis;opposite;contrary
+erudite|ignorant;illiterate;untutored
+eschew|embrace;relish;pursue
+esoteric|common;familiar;popular
+espouse|renounce;repudiate;abandon
+estimable|despicable;contemptible;base
+eulogy|condemnation;censure;denunciation
+euphemism|bluntness;directness;candor
+evanescence|permanence;durability;endurance
+exacting|lenient;easygoing;indulgent
+exasperate|soothe;placate;calm
+excruciating|pleasant;mild;soothing
+exculpate|accuse;indict;blame
+exhaustive|cursory;superficial;partial
+expatiate|summarize;condense;abbreviate
+expatriate|native;citizen;resident
+expedient|hindering;unhelpful;cumbersome
+expiate|incur;provoke;commit
+explicit|vague;implicit;ambiguous
+exponent|opponent;critic;detractor
+expunge|record;enter;inscribe
+expurgate|add;augment;supplement
+extant|lost;extinct;vanished
+extol|condemn;censure;disparage
+extraneous|essential;crucial;integral
+exult|lament;mourn;grieve
+facetious|serious;earnest;solemn
+facile|difficult;arduous;laborious
+facilitate|hinder;impede;obstruct
+fanciful|prosaic;mundane;literal
+fathom|overlook;ignore;disregard
+fatuous|sensible;shrewd;clever
+feasible|impossible;absurd;unthinkable
+felicitous|awkward;clumsy;inept
+fetter|liberate;free;release
+flat|residence;sanctuary;asylum
+fidelity|infidelity;treachery;betrayal
+figurative|literal;exact;precise
+finesse|bluntness;clumsiness;ineptitude
+flag|revive;invigorate;strengthen
+flagrant|subtle;slight;trivial
+fleeting|enduring;permanent;lasting
+foible|strength;virtue;forte
+foment|quell;suppress;pacify
+forbearance|impatience;intolerance;irritability
+foreshadow|reveal;conceal;disclose
+forfeit|retain;keep;claim
+fortify|weaken;undermine;sap
+fortuitous|calamitous;disastrous;unlucky
+fractious|agreeable;docile;compliant
+fray|mend;repair;strengthen
+fringe|center;core;heart
+frugal|lavish;extravagant;wasteful
+furtive|open;candid;brazen
+gainsay|confirm;affirm;corroborate
+gamut|chaos;sameness;demur
+garrulous|taciturn;reticent;silent
+gauche|suave;polished;urbane
+gawky|graceful;poised;elegant
+germane|irrelevant;unrelated;extraneous
+gist|detail;trivia;minutiae
+glib|earnest;sincere;candid
+goosebumps|plenty;overabundance;glut
+gourmand|ascetic;abstainer;teetotaler
+gradation|jump;leap;disjunction
+grandiloquent|plain;unpretentious;modest
+gratuitous|justified;warranted;deserved
+happy-go-lucky|morose;somber;anxious
+harbinger|conclusion;finale;end
+hardy|delicate;frail;feeble
+haven|hazard;peril;danger
+hearken|ignore;spurn;disregard
+hedonist|ascetic;puritan;abstainer
+hegemony|subjection;servitude;dependence
+heterogeneous|uniform;identical;homogeneous
+heterogenous|uniform;identical;homogeneous
+hierarchy|equality;parity;anarchy
+histrionics|restraint;reserve;composure
+hodgepodge|order;unity;coherence
+homogeneous|varied;diverse;mixed
+homogenous|varied;diverse;mixed
+hyperbole|understatement;litotes;restraint
+iconoclast|conformist;traditionalist;stickler
+idiosyncrasy|regularity;norm;convention
+idyllic|grim;harsh;dreary
+ignominious|honorable;glorious;creditable
+ilk|opposite;outlier;stranger
+illiberality|tolerance;openness;liberality
+imminent|remote;distant;explicate
+impair|improve;enhance;strengthen
+impeach|acquit;exonerate;absolve
+importune|appease;satisfy;placate
+impresario|performer;artist;spectator
+impute|disclaim;deny;refute
+inane|sensible;intelligent;profound
+incendiary|soothing;calming;pacifying
+inchoate|complete;finished;realized
+incongruous|appropriate;fitting;harmonious
+incontrovertible|debatable;disputable;questionable
+incorrigibility|docility;compliance;amenability
+incumbent|optional;voluntary;discretionary
+indoctrinate|liberate;enlighten;educate
+indolent|diligent;industrious;active
+inebriated|sober;temperate;abstemious
+inert|active;animated;lively
+inexorable|avoidable;preventable;escapable
+infraction|observance;compliance;adherence
+ingenuous|wily;crafty;sly
+ingrained|superficial;shallow;fleeting
+inimical|beneficial;favorable;friendly
+injunction|permission;license;sanction
+inordinate|moderate;reasonable;appropriate
+insidious|obvious;blatant;open
+insouciant|anxious;concerned;worried
+instigate|prevent;discourage;deter
+interlocutor|listener;audience;spectator
+internecine|external;foreign;horripilation
+intimation|denial;disavowal;refusal
+intractable|tractable;compliant;docile
+intransigent|flexible;accommodating;yielding
+invective|praise;encomium;compliment
+inveterate|occasional;casual;infrequent
+invigorate|tire;exhaust;weary
+inviolable|breachable;violable;vulnerable
+irascible|serene;calm;placid
+irresolute|decisive;resolute;firm
+irreverence|respect;reverence;deference
+itinerant|settled;fixed;sedentary
+jettison|retain;store;salvage
+juxtapose|separate;isolate;divide
+kindle|quench;extinguish;douse
+knell|jubilation;celebration;triumph
+labyrinth|plain;expanse;dress
+laceration|bruise;contusion;abrasion
+laconic|loquacious;verbose;garrulous
+lampoon|praise;flatter;eulogize
+languor|energy;vigor;liveliness
+largesse|meanness;parsimony;stinginess
+lassitude|energy;vigor;zeal
+latent|overt;manifest;apparent
+laud|condemn;denounce;disparage
+levity|gravity;solemnity;seriousness
+levy|waive;remit;forgo
+liability|asset;advantage;boon
+libertarian|authoritarian;autocrat;totalitarian
+libertine|ascetic;puritan;prude
+linchpin|afterthought;appendage;extra
+lithe|clumsy;awkward;stiff
+loquacious|taciturn;reticent;laconic
+lucid|confused;muddled;befuddled
+maelstrom|calm;stillness;lull
+malleable|rigid;inflexible;stiff
+masticate|swallow;gulp;ignore
+maudlin|cheerful;jovial;stoical
+maverick|conformist;traditionalist;loyalist
+mendacious|honest;truthful;candid
+mercurial|stable;steady;constant
+metamorphosis|stasis;constancy;immobility
+modicum|surfeit;excess;glut
+morass|clarity;order;simplicity
+mores|laws;rules;statutes
+moribund|vibrant;thriving;flourishing
+multifarious|uniform;monotonous;homogeneous
+munificent|miserly;niggardly;stingy
+nadir|zenith;apex;summit
+nascent|mature;established;developed
+nefarious|virtuous;upright;honorable
+neophyte|expert;veteran;master
+nepotism|meritocracy;impartiality;fairness
+notoriety|obscurity;anonymity;oblivion
+obdurate|pliant;yielding;tractable
+obfuscate|clarify;explain;elucidate
+obsequious|assertive;forthright;haughty
+obstreperous|docile;compliant;subdued
+obviate|cause;necessitate;require
+occult|obvious;apparent;visible
+onerous|light;easy;effortless
+opaque|clear;transparent;lucid
+opprobrium|praise;acclaim;honor
+orthodox|heterodox;unconventional;heretical
+ostentatious|modest;understated;unassuming
+ostracism|acceptance;welcome;inclusion
+palliate|worsen;aggravate;exacerbate
+panacea|poison;scourge;bane
+pandemonium|calm;quiet;order
+parable|fact;history;chronicle
+paradigm|anomaly;exception;aberration
+paradox|certainty;obviousness;clarity
+paragon|failure;dud;bungler
+pariah|celebrity;favorite;darling
+parsimonious|lavish;generous;profligate
+patent|hidden;obscure;concealed
+pathological|normal;wholesome;healthy
+paucity|abundance;plenty;profusion
+pecuniary|nonmonetary;moral;spiritual
+pejorative|complimentary;flattering;laudatory
+penchant|aversion;dislike;distaste
+penurious|affluent;prosperous;wealthy
+peregrination|settlement;residence;stay
+perfidious|loyal;faithful;trustworthy
+perfunctory|thorough;meticulous;painstaking
+pernicious|benign;harmless;innocuous
+perspicacious|obtuse;dull;slow
+pert|modest;demure;meek
+perturbed|composed;serene;tranquil
+peruse|skim;neglect;disregard
+philanthropic|misanthropic;selfish;stingy
+phlegmatic|excitable;volatile;agitated
+pithy|verbose;wordy;rambling
+placate|provoke;anger;incense
+placid|agitated;turbulent;stormy
+platitude|originality;insight;freshness
+plaudit|condemnation;rebuke;criticism
+plenitude|scarcity;lack;shortage
+plethora|dearth;scarcity;lack
+polarized|unified;consolidated;moderate
+ponderous|nimble;light;agile
+portent|introduction;blaze;token
+posthumous|contemporary;living;current
+potentate|subject;vassal;commoner
+precipitate|retard;delay;defer
+preclude|allow;permit;facilitate
+precocious|backward;slow;immature
+predilection|aversion;dislike;reluctance
+predisposition|aversion;immunity;resistance
+prelude|conclusion;finale;epilogue
+premonition|certainty;proof;confirmation
+preponderance|shortage;deficiency;lack
+presage|confirm;verify;refute
+prevaricate|confess;admit;disclose
+pristine|tarnished;defiled;soiled
+privation|plenty;abundance;affluence
+probation|acquittal;release;freedom
+probity|dishonesty;corruption;venality
+proclivity|aversion;repulsion;dislike
+prodigious|paltry;meager;insignificant
+profuse|meager;sparse;scant
+progeny|ancestors;forebears;predecessors
+proliferate|diminish;dwindle;contract
+promulgate|suppress;withhold;conceal
+propitious|unfavorable;inauspicious;ominous
+prosaic|poetic;imaginative;lyrical
+proscribe|permit;authorize;sanction
+puerile|mature;adult;fatuous
+pugnacious|peaceful;amiable;placid
+punctilious|careless;sloppy;negligent
+quandary|certainty;clarity;resolution
+quibble|agree;concede;accept
+quixotic|practical;realistic;pragmatic
+quotidian|extraordinary;unusual;remarkable
+rabid|moderate;restrained;measured
+raiment|nakedness;undress;bareness
+recalcitrant|compliant;tractable;obedient
+recant|affirm;reaffirm;maintain
+recondite|plain;simple;obvious
+redolent|scentless;odorless;bland
+redoubtable|timid;fearful;mild
+relegate|promote;elevate;advance
+remiss|diligent;careful;attentive
+repertoire|paucity;limitation;lack
+repose|activity;exertion;toil
+reprobate|saint;paragon;model
+repudiate|endorse;accept;embrace
+requisition|donate;relinquish;surrender
+rescind|enact;reinstate;restore
+restive|calm;tranquil;docile
+reticent|talkative;loquacious;candid
+rue|welcome;relish;celebrate
+ruminate|ignore;disregard;neglect
+rustic|urbane;sophisticated;polished
+sacrosanct|profane;desecrated;unhallowed
+salubrious|unhealthy;noxious;harmful
+sanctimonious|humble;modest;unpretentious
+sanguine|despairing;pessimistic;gloomy
+satiate|starve;deprive;famish
+saturate|dry;drain;desiccate
+savor|disdain;scorn;dislike
+scathing|flattering;complimentary;kind
+schism|unity;harmony;agreement
+scurrilous|courteous;polite;decent
+secular|religious;sacred;spiritual
+sedulous|lax;careless;slothful
+sentient|inanimate;insensate;unconscious
+serendipity|misfortune;misadventure;torrent
+shibboleth|truth;standard;principle
+sinecure|job;post;chore
+skepticism|credulity;faith;trust
+slovenly|neat;tidy;immaculate
+solicitous|indifferent;negligent;careless
+soluble|insoluble;immiscible;unmixable
+soporific|stimulating;energizing;invigorating
+spartan|luxurious;lavish;opulent
+spate|lull;trickle;drought
+specious|valid;sound;sincere
+spectrum|single;unity;uniformity
+sportive|solemn;grave;somber
+stoical|emotional;demonstrative;excitable
+stolid|excitable;emotional;vivacious
+strident|soothing;melodious;gentle
+stymie|assist;facilitate;promote
+subterfuge|candor;honesty;openness
+succinct|verbose;rambling;wordy
+supercilious|humble;obsequious;deferential
+supine|erect;upright;vertical
+supplicate|command;demand;dictate
+surfeit|dearth;shortage;insufficiency
+surmise|know;confirm;verify
+surreptitious|open;overt;frank
+swarthy|pale;fair;pallid
+synchronous|disparate;discordant;irregular
+taciturn|talkative;chatty;garrulous
+tangential|central;core;pivotal
+tantamount|inconsistent;unrelated;distinct
+temerity|timidity;modesty;caution
+tenable|untenable;indefensible;unsustainable
+tenuous|solid;firm;secure
+terra|sea;water;ocean
+timorous|bold;brave;fearless
+tirade|praise;commendation;eulogy
+toady|critic;detractor;rebel
+tome|pamphlet;leaflet;brochure
+torpid|energetic;active;brisk
+torrid|frigid;frosty;icy
+tractable|stubborn;unmanageable;obstinate
+tremulous|firm;steady;resolute
+trenchant|vague;mild;feeble
+truculent|conciliatory;peaceable;friendly
+turpitude|virtue;honesty;integrity
+tyro|master;virtuoso;expert
+ubiquitous|rare;scarce;uncommon
+umbrage|pleasure;delight;satisfaction
+unctuous|sincere;candid;forthright
+untenable|tenable;defensible;viable
+unveiling|concealment;covering;hiding
+upbraid|praise;commend;applaud
+urbane|rustic;boorish;crude
+utilitarian|ornamental;decorative;frivolous
+vacillate|commit;resolve;decide
+vapid|stimulating;lively;vivacious
+vehement|mild;tepid;restrained
+veneer|substance;core;essence
+venerate|disdain;scorn;revile
+veracity|falsehood;mendacity;untruth
+verbose|concise;terse;succinct
+verve|apathy;listlessness;lethargy
+vestige|whole;entirety;totality
+vexatious|pleasing;gratifying;agreeable
+vicissitudes|stability;certainty;constancy
+virtuoso|bungler;amateur;novice
+viscous|watery;thin;fluid
+vitriolic|kindly;gentle;benign
+vituperate|praise;extol;commend
+vivacious|lethargic;listless;sluggish
+volition|compulsion;coercion;obligation
+voluble|reticent;taciturn;silent
+voracious|indifferent;apathetic;uninterested
+whet|dull;blunt;satiate
+wily|naive;innocent;guileless
+wistful|cheerful;carefree;gleeful
+yen|disinterest;aversion;distaste
+yoke|liberty;freedom;release
+zealous|apathetic;indifferent;lukewarm
+zephyr|gale;tempest;hurricane`;
+const DIST = Object.fromEntries(DIST_RAW.split("\n").map(l => { const i = l.indexOf("|"); return [l.slice(0, i), l.slice(i + 1).split(";").map(x => x.trim()).filter(Boolean)]; }));
 const WORDS = RAW.trim().split("\n").map(l => {
   const [w, s, d, r] = l.split("|");
   const base = s.split(";").map(x => x.trim()).filter(Boolean);
-  return { w, s: uniqCI([...base, ...(EXTRA[w] || [])]), d, r: r || "-", ex: EX[w] || "" };
+  return { w, s: uniqCI([...base, ...(EXTRA[w] || [])]), d, r: r || "-", ex: EX[w] || "", dz: DIST[w] || [] };
 });
 
 let quiz = [], idx = 0, score = 0, log = [], current = null;
@@ -1695,14 +2262,15 @@ function rootLabel(r) {
   return r === "-" ? "no clear root" : `${r} (${ROOTS[r] || "?"})`;
 }
 function makeOptions(item) {
+  const hasDz = item.dz && item.dz.length === 3;
   if (curMode === "blank") {
-    const pool = [...new Set(WORDS.map(x => x.w).filter(x => x !== item.w))];
-    return { correct: item.w, opts: shuffle([item.w, ...shuffle(pool).slice(0, 3)]) };
+    const d = hasDz ? item.dz : shuffle([...new Set(WORDS.map(x => x.w).filter(x => x !== item.w))]).slice(0, 3);
+    return { correct: item.w, opts: shuffle([item.w, ...d]) };
   }
   const mine = new Set(item.s.map(x => x.toLowerCase()));
-  const pool = [...new Set(WORDS.flatMap(x => x.s).filter(x => !mine.has(x.toLowerCase())))];
+  const d = hasDz ? item.dz : shuffle([...new Set(WORDS.flatMap(x => x.s).filter(x => !mine.has(x.toLowerCase())))]).slice(0, 3);
   const correct = shuffle([...item.s])[0];
-  return { correct, opts: shuffle([correct, ...shuffle(pool).slice(0, 3)]) };
+  return { correct, opts: shuffle([correct, ...d]) };
 }
 function isCorrect(pick) {
   if (current.mode === "blank") return pick.toLowerCase() === current.w.toLowerCase();
