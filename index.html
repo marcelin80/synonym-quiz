@@ -42,6 +42,7 @@
   .nav { margin-bottom: 14px; }
   .tag { display:inline-block; font-size:12px; background:#eef2ff; color:#3730a3; border-radius:6px; padding:2px 6px; }
   .syns { color: var(--ink); }
+  .sentence { font-size: 20px; line-height: 1.6; font-weight: 500; }
 </style>
 </head>
 <body>
@@ -50,7 +51,11 @@
   <div class="sub">SSAT / ISEE Upper Level · Word List pp. 230–233</div>
 
   <div id="home" class="card">
-    <p>Choose a number of questions. Pick the word closest in meaning. Any listed synonym counts as correct.</p>
+    <p>Choose a quiz type and number of questions.</p>
+    <div class="opt-row">
+      <label><input type="radio" name="mode" value="syn" checked> Synonym</label>
+      <label><input type="radio" name="mode" value="blank"> Fill in the blank</label>
+    </div>
     <div class="opt-row">
       <label><input type="radio" name="n" value="10"> 10</label>
       <label><input type="radio" name="n" value="20" checked> 20</label>
@@ -65,7 +70,7 @@
   <div id="quiz" class="card hidden">
     <div class="progress" id="progress"></div>
     <div class="word" id="qword"></div>
-    <div class="sub" style="margin:4px 0 0">Which word is closest in meaning?</div>
+    <div class="sub" id="qhint" style="margin:4px 0 0">Which word is closest in meaning?</div>
     <div class="choices" id="choices"></div>
     <div class="feedback" id="feedback"></div>
     <button class="btn hidden" id="nextBtn" onclick="next()">Next</button>
@@ -655,13 +660,1028 @@ yoke|bondage; burden; subjugation; servitude; link|a bond or burden|-
 zealous|fervent; ardent; eager; passionate; devoted|full of enthusiasm|-
 zephyr|breeze; gust; wind; draft; puff|a gentle breeze|-`;
 
+const EX_RAW = `abject|The refugees lived in abject poverty after the flood.
+abjure|He was forced to abjure his former beliefs in public.
+abnegation|Her abnegation of personal comfort impressed everyone.
+abrogate|The council voted to abrogate the old contract.
+abstemious|The monk led an abstemious life, eating only bread and water.
+accost|A stranger began to accost us on the street, asking for money.
+acumen|Her business acumen helped the company survive the recession.
+adulterate|Some vendors adulterate milk with water to increase profit.
+adumbrate|The opening chapter seems to adumbrate the novel's tragic ending.
+aggrandize|The king used the war to aggrandize his own power.
+alacrity|She accepted the invitation with alacrity.
+alias|The spy traveled under the alias of a retired teacher.
+alleviate|The new medicine should alleviate the patient's pain.
+allude|The speaker did not name the senator but seemed to allude to him.
+altruistic|Her altruistic donations of time and money inspired the town.
+ameliorate|The government hopes new housing will ameliorate living conditions.
+amorphous|The clouds formed an amorphous shape over the hills.
+anachronistic|A rotary phone on a modern office desk would look anachronistic.
+anathema|Lying to voters is anathema to a fair election.
+annex|The country planned to annex the neighboring province.
+antediluvian|His antediluvian computer still runs on floppy disks.
+antithesis|Cruelty is the antithesis of kindness.
+apocryphal|The story about his dog saving a town is probably apocryphal.
+approbation|The judges received warm approbation from the audience.
+arcane|The rules of the medieval guild were arcane and hard to follow.
+archetypal|The detective is an archetypal hero of the noir genre.
+ardent|She was an ardent supporter of public libraries.
+artifact|Archaeologists unearthed an ancient artifact near the river.
+artifice|The novel's twist was an artifice designed to surprise readers.
+ascetic|The hermit lived an ascetic life in a mountain cave.
+aspersion|He cast an aspersion on his rival's honesty during the debate.
+assiduous|She was assiduous in checking every line of her essay.
+attenuate|Distance can attenuate the sound of thunder.
+austerity|The family lived with austerity after losing their income.
+avaricious|The avaricious landlord raised the rent every month.
+balk|The horse began to balk at the edge of the bridge.
+bedlam|When the fire alarm rang, the school erupted into bedlam.
+beguile|The salesman tried to beguile customers with flattering words.
+benevolent|The benevolent old man gave food to every child in the neighborhood.
+besmirch|The scandal threatened to besmirch the senator's reputation.
+bigot|No one wanted to hire the bigot, despite his skills.
+blandishment|He ignored every blandishment the salespeople at the mall offered.
+bogus|The bank warned customers about bogus emails asking for passwords.
+boor|At dinner, the boor interrupted everyone and ate with his mouth open.
+brittle|After years in the sun, the paper became brittle and yellow.
+bulwark|The old fort served as a bulwark against invaders.
+burgeon|The city began to burgeon after the new railway opened.
+buttress|Steel beams buttress the bridge against strong winds.
+cache|Squirrels make a cache of nuts for the winter.
+cacophony|The cacophony of car horns filled the busy street.
+cajole|She tried to cajole her brother into cleaning the kitchen.
+callow|The callow intern made several mistakes in his first week.
+calumny|The politician fought back against calumny spread by his opponents.
+candor|I appreciate your candor, even when your news is bad.
+cant|The speech was full of empty cant about unity and progress.
+capitulate|After a long siege, the city had no choice but to capitulate.
+capricious|The capricious weather made it hard to plan the picnic.
+carp|He would carp about the food, even though it was delicious.
+castigate|The editor wanted to castigate the journalist for careless errors.
+catalyst|The discovery acted as a catalyst for new research.
+celerity|The team responded to the emergency with remarkable celerity.
+chagrin|To her chagrin, she arrived at the meeting a day late.
+chauvinism|His chauvinism made it hard for others to respect his opinions.
+chimerical|Their plan to build a city on the moon seemed chimerical.
+circumlocution|Instead of saying he was fired, he used circumlocution.
+circumvent|Drivers try to circumvent the traffic by taking side roads.
+cogent|The lawyer presented a cogent argument that convinced the jury.
+cognizant|Are you cognizant of the risks involved?
+comely|The comely young woman smiled at the crowd.
+commodious|The hotel room was commodious, with space for a desk and a sofa.
+compunction|He felt no compunction about taking the last slice.
+concoction|The witch stirred a strange concoction in her cauldron.
+concomitant|Higher prices are a concomitant of rapid economic growth.
+condone|The principal would not condone cheating on any exam.
+conduit|The river serves as a conduit for water to the farms.
+conflagration|The conflagration destroyed much of the old town.
+congruity|There was a congruity between her words and her actions.
+conjecture|Scientists can only conjecture about what happened millions of years ago.
+connive|The two clerks connive to hide the missing money.
+connoisseur|The wine connoisseur could identify each grape by taste.
+consternation|To everyone's consternation, the train was canceled again.
+constituent|Water is a constituent of most food.
+construe|I construe his silence as a sign of agreement.
+consummate|She showed consummate skill in every performance.
+contravene|The new law would contravene the constitution.
+contrite|The boy looked contrite after breaking the window.
+conundrum|How to fund the project remained a conundrum for the board.
+copious|The professor took copious notes during the lecture.
+corpulence|Corpulence can increase the risk of several diseases.
+coterie|A small coterie of artists met in the cafe every Friday.
+countenance|The teacher would not countenance rudeness in class.
+coup|The military staged a coup and took control of the capital.
+crescendo|The music built to a crescendo before the final chord.
+culpable|The jury found the driver culpable for the accident.
+cupidity|His cupidity led him to cheat his own partners.
+decadence|Historians often describe the fall of Rome as a period of decadence.
+decrepit|The decrepit barn was ready to collapse.
+defunct|The company has been defunct for a decade.
+deleterious|Smoking has deleterious effects on the lungs.
+delirious|With a high fever, he became delirious and confused.
+deluge|A deluge of emails arrived after the announcement.
+demagogue|The demagogue promised easy answers to complex problems.
+demur|She did not demur when asked to lead the team.
+denigrate|Do not denigrate your opponents; argue the issues instead.
+deride|The critics deride the film as shallow and boring.
+desultory|They made desultory attempts to fix the broken fence.
+dexterity|The surgeon operated with great dexterity.
+diaphanous|She wore a diaphanous scarf that floated in the breeze.
+diatribe|The radio host delivered a diatribe against the new tax.
+didactic|The children's book has a didactic message about sharing.
+dilettante|He was a dilettante who painted, played piano, and wrote poems, but mastered none.
+disparate|The club brings together people from disparate backgrounds.
+domicile|The family found a new domicile in the countryside.
+dour|The dour clerk never smiled at the customers.
+drudgery|Washing dishes for hours was pure drudgery.
+duplicity|Her duplicity was revealed when the letters surfaced.
+duress|He signed the confession under duress.
+ebullient|The ebullient crowd cheered the winning goal.
+eclectic|Her taste in music is eclectic, from jazz to folk.
+edict|The king issued an edict banning the festival.
+edifice|The marble edifice dominated the city square.
+effigy|Protesters burned an effigy of the mayor.
+egalitarian|The school has an egalitarian culture in which everyone's voice counts.
+egregious|It was an egregious error to publish false figures.
+elegy|The poet wrote an elegy for his fallen friend.
+elicit|The detective tried to elicit a confession from the suspect.
+elucidate|The professor paused to elucidate the difficult theorem.
+emaciated|The emaciated puppy had been abandoned in the snow.
+embezzlement|The accountant was convicted of embezzlement.
+emollient|The doctor recommended an emollient to soothe the dry skin.
+empirical|The theory is supported by empirical evidence from many experiments.
+emulate|Young athletes often emulate their favorite stars.
+encumbrance|The heavy backpack was an encumbrance on the long hike.
+enervate|The heat seemed to enervate everyone at the picnic.
+enhance|A little sunlight can enhance the flavor of ripe tomatoes.
+enigma|The meaning of the ancient symbol remains an enigma.
+ennui|Bored with the routine, he felt a deep ennui.
+entourage|The celebrity arrived with an entourage of assistants.
+enunciate|Please enunciate each word so the audience can understand.
+ephemeral|The rainbow was ephemeral, gone within minutes.
+epitome|She is the epitome of grace on the dance floor.
+erudite|The erudite professor quoted Greek poets from memory.
+eschew|The chef chooses to eschew processed foods in every recipe.
+esoteric|The book discusses esoteric ideas that few readers understand.
+espouse|The candidate began to espouse new ideas about education.
+estimable|She is an estimable teacher admired by all her students.
+eulogy|His daughter gave a moving eulogy at the funeral.
+euphemism|Passed away is a euphemism for died.
+evanescence|The evanescence of the morning mist made the view magical.
+exacting|The exacting director demanded perfection in every scene.
+exasperate|The constant noise began to exasperate the neighbors.
+excruciating|The wait in the dentist's office was excruciating.
+exculpate|New evidence helped to exculpate the innocent man.
+exhaustive|The report offers an exhaustive review of the data.
+expatiate|He would expatiate on his travels for hours.
+expatriate|She lived for years as an expatriate in Paris.
+expedient|Lying seemed expedient, but it was morally wrong.
+expiate|He tried to expiate his guilt through charity work.
+explicit|The instructions were explicit and easy to follow.
+exponent|She is a leading exponent of renewable energy.
+expunge|The court agreed to expunge the records.
+expurgate|The publisher chose to expurgate the violent scenes from the textbook.
+extant|Only a few copies of the book are still extant.
+extol|The coach would extol the virtues of teamwork.
+extraneous|Remove any extraneous details from your summary.
+exult|The fans exult when their team wins the championship.
+facetious|His facetious comment made the serious meeting awkward.
+facile|The solution seemed facile, but it failed in practice.
+facilitate|The new software will facilitate communication between departments.
+fanciful|The child told a fanciful story about talking dragons.
+fathom|I cannot fathom why anyone would do such a thing.
+fatuous|His fatuous remarks made everyone groan.
+feasible|A three-day trip is feasible, though it will be tight.
+felicitous|The speaker chose a felicitous phrase to open the ceremony.
+fetter|Old customs can fetter people's freedom to change.
+flat|The soup tasted flat, so she added salt.
+fidelity|The dog showed great fidelity to its owner.
+figurative|The poem uses figurative language about the sea.
+finesse|He handled the difficult negotiation with finesse.
+flag|Energy levels began to flag in the afternoon heat.
+flagrant|It was a flagrant violation of the rules.
+fleeting|Youth is fleeting, so enjoy every moment.
+foible|Being late is a minor foible of my friend.
+foment|The rumors began to foment unrest in the town.
+forbearance|She showed forbearance when her roommate kept making mistakes.
+foreshadow|The dark clouds foreshadow a storm.
+forfeit|If you miss the deadline, you will forfeit your deposit.
+fortify|The walls were built to fortify the city against attack.
+fortuitous|The fortuitous discovery of the cave saved the expedition.
+fractious|The fractious children refused to sit still in the car.
+fray|The rope began to fray after years of use.
+fringe|The village lies on the fringe of the desert.
+frugal|The frugal family saved money by cooking at home.
+furtive|He cast a furtive glance over his shoulder.
+gainsay|No one could gainsay the evidence presented in court.
+gamut|The menu runs the gamut from soups to desserts.
+garrulous|The garrulous neighbor talked for an hour about her garden.
+gauche|His gauche remark about her weight embarrassed everyone.
+gawky|The gawky teenager was still growing into his long legs.
+germane|Please stick to points that are germane to the debate.
+gist|I missed the details, but I got the gist of the story.
+glib|The glib salesman promised the product would solve every problem.
+goosebumps|The cold wind gave me goosebumps on my arms.
+gourmand|The gourmand tasted every dish at the banquet.
+gradation|There is a gradation of colors from dark blue to pale white.
+grandiloquent|The grandiloquent speech was full of big words and little meaning.
+gratuitous|The movie included gratuitous violence that added nothing to the plot.
+happy-go-lucky|My happy-go-lucky brother never worries about tomorrow.
+harbinger|Crows were once thought to be a harbinger of bad luck.
+hardy|Hardy plants survive the harsh winters of the north.
+haven|The quiet library was a haven from the noisy street.
+hearken|Please hearken to the advice of your elders.
+hedonist|The hedonist spent every weekend at parties and fine restaurants.
+hegemony|The empire sought hegemony over the entire region.
+heterogeneous|The city has a heterogeneous population of many cultures.
+heterogenous|The heterogenous group included students, teachers, and parents.
+hierarchy|The company's hierarchy places managers above staff.
+histrionics|Her histrionics at the news made everyone uncomfortable.
+hodgepodge|The attic was a hodgepodge of old toys, books, and furniture.
+homogeneous|The village was homogeneous, with almost everyone sharing the same background.
+homogenous|Milk is homogenous, with the cream spread evenly throughout.
+hyperbole|Calling it the worst day ever is hyperbole.
+iconoclast|The iconoclast refused to follow any of the art world's rules.
+idiosyncrasy|Tapping his pencil is an idiosyncrasy of his.
+idyllic|They spent an idyllic summer by the lake.
+ignominious|The team's ignominious defeat ended its season.
+ilk|I don't trust politicians of that ilk.
+illiberality|The illiberality of the regime silenced all dissent.
+imminent|Rain is imminent, so bring an umbrella.
+impair|Lack of sleep can impair your judgment.
+impeach|The lawmakers voted to impeach the official.
+importune|Beggars would importune travelers at the station.
+impresario|The impresario booked the orchestra for a world tour.
+impute|Critics impute bad motives to the director.
+inane|The inane comments made the meeting pointless.
+incendiary|The incendiary article inflamed the crowd.
+inchoate|The plan was still inchoate, with few details yet.
+incongruous|A tuxedo looked incongruous at the beach party.
+incontrovertible|The DNA evidence was incontrovertible.
+incorrigibility|His incorrigibility was legendary; he never changed his habits.
+incumbent|It is incumbent on every citizen to vote.
+indoctrinate|Some groups try to indoctrinate young people with extreme beliefs.
+indolent|The indolent cat slept all afternoon.
+inebriated|The inebriated driver was stopped by police.
+inert|Helium is an inert gas that does not react easily.
+inexorable|The inexorable march of time changes everything.
+infraction|Parking in the bus lane is a minor infraction.
+ingenuous|The ingenuous child believed every word the magician said.
+ingrained|Honesty was ingrained in her from childhood.
+inimical|Pollution is inimical to healthy rivers.
+injunction|The court issued an injunction to stop construction.
+inordinate|She spent an inordinate amount of time on her phone.
+insidious|The insidious disease showed no symptoms for years.
+insouciant|She was insouciant about the test, shrugging it off.
+instigate|The workers planned to instigate a strike.
+interlocutor|The journalist's interlocutor answered every question calmly.
+internecine|The internecine feud split the family for decades.
+intimation|The letter gave an intimation that the company might close.
+intractable|The problem proved intractable despite many attempts.
+intransigent|The intransigent negotiator refused every compromise.
+invective|The speech was filled with invective against the rival party.
+inveterate|He is an inveterate gambler who cannot stop betting.
+invigorate|A cold swim can invigorate the body in the morning.
+inviolable|The right to privacy is considered inviolable.
+irascible|The irascible old man shouted at every passing car.
+irresolute|Irresolute, she stood at the door without deciding to enter.
+irreverence|His irreverence shocked the solemn audience.
+itinerant|The itinerant musician traveled from town to town.
+jettison|The crew had to jettison cargo to keep the ship afloat.
+juxtapose|The artist likes to juxtapose bright colors with dark shadows.
+kindle|The story would kindle her interest in history.
+knell|The bell's knell announced the end of the war.
+labyrinth|The hedge labyrinth confused every visitor.
+laceration|The cook got a deep laceration from the knife.
+laconic|His laconic reply was just one word: Fine.
+lampoon|The magazine would lampoon politicians every month.
+languor|A languor settled over the town during the hot afternoon.
+largesse|The philanthropist's largesse funded three new hospitals.
+lassitude|Illness left him with a deep lassitude.
+latent|The talent was latent until she took her first art class.
+laud|Critics laud the film as a masterpiece.
+levity|Her levity lightened the tense mood at the meeting.
+levy|The city will levy a new tax on hotels.
+liability|Old software can be a liability for the company's security.
+libertarian|The libertarian argues that government should stay out of personal choices.
+libertine|The libertine lived a reckless life of pleasure.
+linchpin|She is the linchpin of the entire project.
+lithe|The lithe dancer leapt across the stage.
+loquacious|The loquacious guide talked nonstop during the tour.
+lucid|Even at ninety, my grandmother is lucid and sharp.
+maelstrom|The ship was pulled into a maelstrom off the coast.
+malleable|Young minds are often more malleable than older ones.
+masticate|Cows masticate grass for hours each day.
+maudlin|The maudlin movie made everyone cry.
+maverick|The maverick senator refused to follow his party's line.
+mendacious|The mendacious witness lied about where he had been.
+mercurial|Her mercurial mood changed from joy to anger in minutes.
+metamorphosis|The caterpillar undergoes a metamorphosis into a butterfly.
+modicum|Show a modicum of respect for your elders.
+morass|The project fell into a morass of paperwork.
+mores|The mores of the village forbade gossiping about neighbors.
+moribund|The moribund company had no new customers.
+multifarious|The city offers multifarious activities for every age.
+munificent|The munificent donor paid for the new library.
+nadir|Their relationship reached its nadir after the argument.
+nascent|The nascent industry grew quickly in the 1990s.
+nefarious|The villain planned a nefarious scheme to steal the jewels.
+neophyte|The neophyte chef struggled with his first big order.
+nepotism|Nepotism led the boss to hire his nephew without experience.
+notoriety|The thief gained notoriety after his trial was televised.
+obdurate|The obdurate official refused to reconsider the decision.
+obfuscate|The report was written to obfuscate the real costs.
+obsequious|The obsequious waiter bowed at every request.
+obstreperous|The obstreperous crowd shouted down the speaker.
+obviate|Careful planning will obviate the need for a second trip.
+occult|She studied occult texts about ancient rituals.
+onerous|The onerous rules made the process very slow.
+opaque|The glass was opaque, so we could not see inside.
+opprobrium|The scandal brought public opprobrium upon the company.
+orthodox|Her orthodox views on education were widely accepted.
+ostentatious|The ostentatious mansion had gold fountains in every room.
+ostracism|After the scandal, he faced ostracism from his old friends.
+palliate|The drug can palliate the pain without curing the disease.
+panacea|There is no panacea for all of life's problems.
+pandemonium|Pandemonium broke out when the lights went out.
+parable|The teacher told a parable about a farmer and his seeds.
+paradigm|The discovery shifted the paradigm of modern physics.
+paradox|It is a paradox that the more we know, the more we realize we do not know.
+paragon|She is a paragon of honesty and hard work.
+pariah|After the scandal, he became a pariah in the community.
+parsimonious|The parsimonious shopkeeper refused to give discounts.
+patent|It was patent that he had been lying.
+pathological|Her pathological fear of heights kept her off the roof.
+paucity|There was a paucity of evidence in the case.
+pecuniary|The lawsuit sought only pecuniary damages.
+pejorative|The word is a pejorative term for a stubborn person.
+penchant|He has a penchant for old jazz records.
+penurious|The penurious family lived on very little money.
+peregrination|His peregrination across Asia lasted three years.
+perfidious|The perfidious servant sold secrets to the enemy.
+perfunctory|The guard gave the bags a perfunctory check.
+pernicious|The pernicious rumor spread quickly online.
+perspicacious|The perspicacious editor spotted every error in the draft.
+pert|The pert girl answered back cheekily.
+perturbed|She was perturbed by the strange noise in the attic.
+peruse|Take a moment to peruse the menu before ordering.
+philanthropic|The philanthropic billionaire funded schools across the country.
+phlegmatic|The phlegmatic doctor stayed calm during the emergency.
+pithy|The coach gave a pithy speech that fit on a card.
+placate|He tried to placate the angry customer with a refund.
+placid|The placid lake reflected the blue sky.
+platitude|The speech was one platitude after another about hard work.
+plaudit|The author received a plaudit from every major newspaper.
+plenitude|The garden had a plenitude of roses and lilies.
+plethora|The store offers a plethora of options for every budget.
+polarized|The country has become deeply polarized over the issue.
+ponderous|The ponderous book took months to finish.
+portent|The strange birds were seen as a portent of disaster.
+posthumous|The poet received a posthumous award after his death.
+potentate|The potentate ruled the desert kingdom for forty years.
+precipitate|The new law may precipitate a wave of protests.
+preclude|A broken leg will preclude any running this month.
+precocious|The precocious child could read at age three.
+predilection|She has a predilection for spicy food.
+predisposition|He has a genetic predisposition to heart disease.
+prelude|The quiet morning was a prelude to a busy day.
+premonition|She had a premonition that something bad would happen.
+preponderance|There is a preponderance of evidence supporting the claim.
+presage|The dark clouds presage a coming storm.
+prevaricate|Rather than prevaricate, just tell me the truth.
+pristine|The beach was pristine, without a single piece of trash.
+privation|The soldiers endured cold, hunger, and privation.
+probation|He was placed on probation after the incident.
+probity|The judge was known for her probity and fairness.
+proclivity|She has a proclivity for asking hard questions.
+prodigious|The prodigious athlete broke three records in one season.
+profuse|He offered profuse apologies for being late.
+progeny|The old king left many progeny to fight for the throne.
+proliferate|Cheap smartphones caused apps to proliferate.
+promulgate|The government will promulgate new rules next week.
+propitious|The weather looked propitious for the wedding.
+prosaic|The prosaic task of filing papers filled his afternoon.
+proscribe|The law will proscribe the sale of fireworks.
+puerile|His puerile jokes made the adults roll their eyes.
+pugnacious|The pugnacious boxer always wanted another round.
+punctilious|The punctilious accountant checked every figure twice.
+quandary|She faced a quandary: stay home or travel abroad.
+quibble|Let's not quibble over small details.
+quixotic|His quixotic plan to sail around the world seemed impossible.
+quotidian|They shared the quotidian tasks of cooking and cleaning.
+rabid|The rabid fans waited outside the stadium all night.
+raiment|The king appeared in splendid raiment.
+recalcitrant|The recalcitrant student refused to do any homework.
+recant|Under pressure, he had to recant his earlier statement.
+recondite|The professor's lecture covered recondite theories.
+redolent|The kitchen was redolent of fresh bread and cinnamon.
+redoubtable|The redoubtable champion had never lost a match.
+relegate|The coach would relegate the weakest player to the bench.
+remiss|It was remiss of him to forget her birthday.
+repertoire|The pianist's repertoire includes works by Chopin.
+repose|She sat in repose beside the fire.
+reprobate|The old reprobate spent his fortune on gambling.
+repudiate|He chose to repudiate his earlier promises.
+requisition|The army will requisition supplies from local farms.
+rescind|The company decided to rescind the unpopular policy.
+restive|The restive crowd grew impatient as the delay continued.
+reticent|He was reticent about his past, rarely speaking of it.
+rue|She would rue the day she lied to her friend.
+ruminate|He sat quietly and would ruminate on the decision.
+rustic|They enjoyed a rustic meal of bread, cheese, and apples.
+sacrosanct|The privacy of medical records is considered sacrosanct.
+salubrious|The mountain air is salubrious for asthma patients.
+sanctimonious|The sanctimonious critic lectured everyone about morals.
+sanguine|She remained sanguine about the team's chances.
+satiate|A large bowl of soup will satiate his hunger.
+saturate|Heavy rain can saturate the soil within hours.
+savor|They savor each bite of the chocolate cake.
+scathing|The critic wrote a scathing review of the play.
+schism|The schism between the two churches lasted centuries.
+scurrilous|The tabloid printed scurrilous rumors about the actor.
+secular|The school is secular and does not teach religion.
+sedulous|The sedulous student studied every night for the exam.
+sentient|Scientists debate whether dolphins are sentient.
+serendipity|Finding the old map was pure serendipity.
+shibboleth|The phrase became a shibboleth that marked members of the group.
+sinecure|The position was a sinecure that paid well for little work.
+skepticism|She greeted the claim with skepticism.
+slovenly|The slovenly room was covered in clothes and dishes.
+solicitous|The nurse was solicitous of the patient's comfort.
+soluble|Sugar is soluble in warm water.
+soporific|The soporific lecture made the whole class drowsy.
+spartan|The soldiers lived in spartan conditions with little food.
+spate|A spate of thefts hit the neighborhood last month.
+specious|The specious argument sounded convincing but was false.
+spectrum|The spectrum of light includes red, green, and violet.
+sportive|The sportive puppies chased each other across the lawn.
+stoical|He remained stoical despite the pain.
+stolid|The stolid guard showed no emotion during the crisis.
+strident|Her strident voice filled the whole hall.
+stymie|The lack of funding began to stymie the project.
+subterfuge|The thief used subterfuge to enter the building.
+succinct|Her report was succinct, covering the key points in one page.
+supercilious|The supercilious waiter looked down on the customers.
+supine|He lay supine on the grass, staring at the clouds.
+supplicate|The villagers supplicate the gods for rain.
+surfeit|There was a surfeit of food at the wedding.
+surmise|From the footprints, we can surmise that someone was running.
+surreptitious|She made a surreptitious call during class.
+swarthy|The swarthy sailor had worked under the sun for years.
+synchronous|The dancers' movements were perfectly synchronous.
+taciturn|The taciturn farmer rarely spoke to strangers.
+tangential|Her comment was tangential and did not address the question.
+tantamount|Ignoring the warning was tantamount to giving up.
+temerity|He had the temerity to interrupt the queen.
+tenable|Is this theory still tenable after the new data?
+tenuous|Their connection to the king was tenuous at best.
+terra|The ship returned safely to terra firma.
+timorous|The timorous child hid behind his mother.
+tirade|The coach launched into a tirade after the loss.
+toady|The toady agreed with every word the boss said.
+tome|The tome contained the complete works of Shakespeare.
+torpid|The snake lay torpid in the cold morning.
+torrid|They spent a torrid summer in the desert.
+tractable|The tractable horse followed every command.
+tremulous|Her tremulous voice revealed her nervousness.
+trenchant|The critic offered trenchant observations about the novel.
+truculent|The truculent customer shouted at the cashier.
+turpitude|The judge condemned the turpitude of the crime.
+tyro|The tyro made many mistakes in his first race.
+ubiquitous|Smartphones have become ubiquitous in modern life.
+umbrage|She took umbrage at the rude comment.
+unctuous|The unctuous salesman praised every customer's shoes.
+untenable|After the new evidence, his position became untenable.
+unveiling|The unveiling of the statue drew a huge crowd.
+upbraid|The mother would upbraid her son for lying.
+urbane|The urbane host welcomed guests with charm and wit.
+utilitarian|The office furniture was plain and utilitarian.
+vacillate|He would vacillate between two job offers for weeks.
+vapid|The vapid talk show filled the hour with nothing of interest.
+vehement|She was vehement in her opposition to the plan.
+veneer|Beneath the polite veneer, he was very selfish.
+venerate|Many people venerate the memory of the founder.
+veracity|The veracity of the report was questioned by experts.
+verbose|The verbose instructions took twenty pages.
+verve|The dancers performed with energy and verve.
+vestige|A vestige of the old wall still stands in the park.
+vexatious|The vexatious paperwork delayed the project for months.
+vicissitudes|She survived the vicissitudes of fortune with grace.
+virtuoso|The violin virtuoso played with astonishing skill.
+viscous|Honey is more viscous than water.
+vitriolic|The vitriolic remarks shocked the audience.
+vituperate|The angry crowd began to vituperate the referee.
+vivacious|The vivacious host kept the party lively all night.
+volition|He left the job of his own volition.
+voluble|The voluble salesman talked about the car for an hour.
+voracious|The voracious reader finished a book every two days.
+whet|The smell of fresh bread can whet my appetite.
+wily|The wily fox escaped the hunters again.
+wistful|She gave a wistful smile as she remembered her childhood.
+yen|He had a yen to travel to Japan.
+yoke|The workers longed to throw off the yoke of their masters.
+zealous|She is a zealous advocate for animal rights.
+zephyr|A gentle zephyr cooled the garden.`;
+const EXTRA_RAW = `abject|pitiful; degraded
+abjure|disclaim; forsake
+abnegation|self-sacrifice; asceticism
+abrogate|void; overturn
+abstemious|self-restrained; frugal
+accost|waylay; solicit
+acumen|astuteness; sagacity
+adulterate|pollute; spoil
+adumbrate|preview; prefigure
+aggrandize|expand; elevate
+alacrity|zeal; quickness
+alias|moniker; handle
+alleviate|assuage; allay
+allude|mention; intimate
+altruistic|magnanimous; humanitarian
+ameliorate|mend; rectify
+amorphous|unformed; indistinct
+anachronistic|archaic; obsolescent
+anathema|detestation; bane
+annex|conquer; absorb
+antediluvian|primitive; prehistoric
+antithesis|counterpart; reverse
+apocryphal|legendary; mythical
+approbation|esteem; favor
+arcane|hidden; cryptic
+archetypal|stereotypical; representative
+ardent|avid; fiery
+artifact|object; implement
+artifice|subterfuge; deceit
+ascetic|self-denying; monastic
+aspersion|smear; insinuation
+assiduous|conscientious; scrupulous
+attenuate|lessen; decrease
+austerity|sobriety; asceticism
+avaricious|miserly; acquisitive
+balk|demur; quail
+bedlam|havoc; mayhem
+beguile|bewitch; fascinate
+benevolent|humane; philanthropic
+besmirch|soil; disgrace
+bigot|racist; sectarian
+blandishment|inducement; enticement
+bogus|spurious; forged
+boor|clod; yahoo
+brittle|frangible; crisp
+bulwark|guard; fortification
+burgeon|sprout; mushroom
+buttress|shore; underpin
+cache|hoard; trove
+cacophony|clamor; jangle
+cajole|entice; woo
+callow|raw; unfledged
+calumny|libel; obloquy
+candor|forthrightness; ingenuousness
+cant|platitudes; gibberish
+capitulate|succumb; cave
+capricious|volatile; unpredictable
+carp|grumble; bellyache
+castigate|berate; upbraid
+catalyst|accelerant; spark
+celerity|dispatch; expedition
+chagrin|mortification; vexation
+chauvinism|bias; sexism
+chimerical|fantastical; delusive
+circumlocution|verbiage; roundabout
+circumvent|elude; thwart
+cogent|persuasive; rigorous
+cognizant|apprised; conversant
+comely|goodly; bonny
+commodious|capacious; spacious
+compunction|scruple; qualm
+concoction|brew; compound
+concomitant|corollary; byproduct
+condone|tolerate; sanction
+conduit|pipeline; vessel
+conflagration|inferno; wildfire
+congruity|coherence; accord
+conjecture|supposition; presumption
+connive|plot; intrigue
+connoisseur|aesthete; cognoscente
+consternation|bewilderment; trepidation
+constituent|element; factor
+construe|decipher; parse
+consummate|expert; masterful
+contravene|flout; transgress
+contrite|repentant; apologetic
+conundrum|mystery; poser
+copious|bountiful; prolific
+corpulence|rotundity; portliness
+coterie|cabal; set
+countenance|allow; permit
+coup|putsch; takeover
+crescendo|buildup; swell
+culpable|answerable; liable
+cupidity|covetousness; craving
+decadence|debauchery; dissipation
+decrepit|feeble; crumbling
+defunct|expired; dissolved
+deleterious|hurtful; ruinous
+delirious|raving; deranged
+deluge|avalanche; barrage
+demagogue|propagandist; panderer
+demur|protest; take exception
+denigrate|malign; impugn
+deride|lampoon; sneer
+desultory|cursory; half-hearted
+dexterity|agility; prowess
+diaphanous|flimsy; ethereal
+diatribe|broadside; rant
+didactic|preachy; moralistic
+dilettante|dabbler; aesthete
+disparate|heterogeneous; motley
+domicile|abode; lodging
+dour|morose; dreary
+drudgery|grind; slog
+duplicity|double-dealing; dishonesty
+duress|constraint; restraint
+ebullient|exhilarated; high-spirited
+eclectic|catholic; miscellaneous
+edict|command; fiat
+edifice|facade; monolith
+effigy|image; doll
+egalitarian|impartial; just
+egregious|flagrant; atrocious
+elegy|keening; requiem
+elicit|procure; generate
+elucidate|explicate; decipher
+emaciated|withered; bony
+embezzlement|misappropriation; swindle
+emollient|balm; salve
+empirical|observational; factual
+emulate|mimic; ape
+encumbrance|impediment; drag
+enervate|debilitate; weary
+enhance|embellish; heighten
+enigma|puzzle; secret
+ennui|languor; malaise
+entourage|posse; following
+enunciate|pronounce; voice
+ephemeral|fleeting; evanescent
+epitome|archetype; paragon
+erudite|academic; well-informed
+eschew|forswear; abjure
+esoteric|exclusive; mystifying
+espouse|subscribe; uphold
+estimable|reputable; praiseworthy
+eulogy|obituary; memorial
+euphemism|mild term; sugarcoating
+evanescence|transience; fugacity
+exacting|fastidious; stringent
+exasperate|vex; madden
+excruciating|racking; tormenting
+exculpate|pardon; release
+exhaustive|comprehensive; encyclopedic
+expatiate|dilate; ramble
+expatriate|emigrant; émigré
+expedient|opportunistic; politic
+expiate|make amends; absolve
+explicit|express; specific
+exponent|apostle; promoter
+expunge|efface; cancel
+expurgate|sanitize; redact
+extant|existent; in existence
+extol|exalt; hail
+extraneous|superfluous; unnecessary
+exult|revel; jubilate
+facetious|waggish; tongue-in-cheek
+facile|simplistic; superficial
+facilitate|enable; smooth
+fanciful|dreamlike; quixotic
+fathom|grasp; apprehend
+fatuous|absurd; brainless
+feasible|realistic; reasonable
+felicitous|timely; opportune
+fetter|trammel; hobble
+flat|tasteless; bland
+fidelity|constancy; fealty
+figurative|symbolic; idiomatic
+finesse|polish; craft
+flag|wane; sag
+flagrant|brazen; shameless
+fleeting|transient; quick
+foible|shortcoming; flaw
+foment|kindle; stir
+forbearance|endurance; clemency
+foreshadow|bode; betoken
+forfeit|lose; yield
+fortify|garrison; shore up
+fortuitous|providential; fortunate
+fractious|quarrelsome; contentious
+fray|fret; abrade
+fringe|outskirts; verge
+frugal|austere; penny-wise
+furtive|covert; shifty
+gainsay|negate; rebut
+gamut|sweep; reach
+garrulous|prattling; long-winded
+gauche|crude; graceless
+gawky|unwieldy; ungainly
+germane|apropos; to the point
+gist|drift; crux
+glib|smooth-talking; silver-tongued
+goosebumps|shivers; piloerection
+gourmand|gourmet; bon vivant
+gradation|gradient; ladder
+grandiloquent|verbose; orotund
+gratuitous|superfluous; unprovoked
+happy-go-lucky|jaunty; sunny
+harbinger|messenger; foreboder
+hardy|tough; hale
+haven|harbor; oasis
+hearken|pay attention; lend ear
+hedonist|playboy; pleasure-lover
+hegemony|primacy; ascendancy
+heterogeneous|miscellaneous; mixed
+heterogenous|motley; diverse
+hierarchy|stratification; system
+histrionics|affectation; posturing
+hodgepodge|clutter; hotchpotch
+homogeneous|even; monolithic
+homogenous|consistent; unvaried
+hyperbole|embellishment; bombast
+iconoclast|rebel; free-thinker
+idiosyncrasy|eccentricity; mannerism
+idyllic|arcadian; bucolic
+ignominious|shameful; inglorious
+ilk|breed; stripe
+illiberality|intolerance; narrowness
+imminent|upcoming; at hand
+impair|undermine; hinder
+impeach|accuse; arraign
+importune|implore; nag
+impresario|showman; entrepreneur
+impute|assign; charge
+inane|fatuous; mindless
+incendiary|combustible; rousing
+inchoate|budding; formative
+incongruous|absurd; unsuitable
+incontrovertible|conclusive; indubitable
+incorrigibility|irredeemability; recalcitrance
+incumbent|binding; sitting
+indoctrinate|instill; ground
+indolent|languid; shiftless
+inebriated|tipsy; loaded
+inert|dormant; still
+inexorable|unstoppable; inescapable
+infraction|misdemeanor; trespass
+ingenuous|guileless; open
+ingrained|inborn; set
+inimical|antagonistic; harmful
+injunction|restraining order; decree
+inordinate|unwarranted; extravagant
+insidious|creeping; surreptitious
+insouciant|carefree; devil-may-care
+instigate|incite; precipitate
+interlocutor|speaker; respondent
+internecine|intestine; fratricidal
+intimation|suggestion; inkling
+intractable|refractory; unyielding
+intransigent|unbending; headstrong
+invective|vilification; obloquy
+inveterate|entrenched; hardened
+invigorate|stimulate; rejuvenate
+inviolable|unassailable; hallowed
+irascible|choleric; peevish
+irresolute|unsure; uncertain
+irreverence|flippancy; blasphemy
+itinerant|migratory; vagrant
+jettison|dump; ditch
+juxtapose|compare; abut
+kindle|arouse; fire
+knell|death knell; signal
+labyrinth|tangle; network
+laceration|rip; wound
+laconic|curt; sparing
+lampoon|burlesque; parody
+languor|sluggishness; drowsiness
+largesse|philanthropy; generosity
+lassitude|fatigue; exhaustion
+latent|undeveloped; potential
+laud|commend; hail
+levity|flippancy; jocularity
+levy|assess; tax
+liability|encumbrance; hindrance
+libertarian|classical liberal; nonconformist
+libertine|profligate; wastrel
+linchpin|cornerstone; hub
+lithe|limber; nimble
+loquacious|gabby; effusive
+lucid|rational; sane
+maelstrom|tempest; confusion
+malleable|tractable; workable
+masticate|gnaw; grind
+maudlin|lachrymose; schmaltzy
+maverick|independent; dissenter
+mendacious|deceitful; fraudulent
+mercurial|temperamental; unstable
+metamorphosis|conversion; transfiguration
+modicum|shred; speck
+morass|swamp; muddle
+mores|ethos; morals
+moribund|obsolescent; failing
+multifarious|numerous; diverse
+munificent|liberal; openhanded
+nadir|rock bottom; depth
+nascent|incipient; developing
+nefarious|iniquitous; heinous
+neophyte|apprentice; learner
+nepotism|patronage; kin favoritism
+notoriety|scandal; ill fame
+obdurate|hard-hearted; implacable
+obfuscate|muddle; blur
+obsequious|sycophantic; slavish
+obstreperous|disorderly; clamorous
+obviate|forestall; eliminate
+occult|magical; secret
+onerous|arduous; oppressive
+opaque|cloudy; unclear
+opprobrium|infamy; reproach
+orthodox|mainstream; standard
+ostentatious|flamboyant; garish
+ostracism|rejection; boycott
+palliate|soothe; relieve
+panacea|catholicon; cure
+pandemonium|mayhem; havoc
+parable|moral tale; apologue
+paradigm|exemplar; archetype
+paradox|anomaly; absurdity
+paragon|ideal; epitome
+pariah|social outcast; reject
+parsimonious|tight-fisted; niggardly
+patent|manifest; plain
+pathological|morbid; abnormal
+paucity|dearth; insufficiency
+pecuniary|budgetary; cash
+pejorative|slighting; deprecatory
+penchant|fondness; predilection
+penurious|needy; poverty-stricken
+peregrination|odyssey; roaming
+perfidious|traitorous; faithless
+perfunctory|routine; mechanical
+pernicious|noxious; deadly
+perspicacious|astute; penetrating
+pert|saucy; brazen
+perturbed|flustered; uneasy
+peruse|scrutinize; review
+philanthropic|altruistic; humanitarian
+phlegmatic|emotionless; imperturbable
+pithy|epigrammatic; sententious
+placate|mollify; propitiate
+placid|tranquil; unruffled
+platitude|truism; commonplace
+plaudit|ovation; praise
+plenitude|copiousness; fullness
+plethora|overabundance; profusion
+polarized|opposed; schismatic
+ponderous|lumbering; labored
+portent|foreboding; harbinger
+posthumous|afterward; subsequent
+potentate|sovereign; magnate
+precipitate|bring about; spark
+preclude|forestall; avert
+precocious|premature; ahead
+predilection|bias; liking
+predisposition|propensity; susceptibility
+prelude|foretaste; opening
+premonition|intuition; warning
+preponderance|excess; prevalence
+presage|portend; predict
+prevaricate|dissemble; evade
+pristine|spotless; unsullied
+privation|destitution; need
+probation|parole; watch
+probity|virtue; incorruptibility
+proclivity|leaning; inclination
+prodigious|monstrous; gigantic
+profuse|generous; effusive
+progeny|descendants; brood
+proliferate|mushroom; snowball
+promulgate|disseminate; decree
+propitious|timely; benign
+prosaic|unimaginative; plain
+proscribe|bar; interdict
+puerile|infantile; babyish
+pugnacious|bellicose; contentious
+punctilious|conscientious; fastidious
+quandary|plight; impasse
+quibble|wrangle; object
+quixotic|utopian; visionary
+quotidian|commonplace; mundane
+rabid|extreme; avid
+raiment|vesture; costume
+recalcitrant|unruly; wayward
+recant|unsay; take back
+recondite|profound; difficult
+redolent|aromatic; evoking
+redoubtable|intimidating; powerful
+relegate|degrade; sideline
+remiss|lax; derelict
+repertoire|catalog; list
+repose|leisure; ease
+reprobate|degenerate; miscreant
+repudiate|renounce; abjure
+requisition|order; seizure
+rescind|withdraw; reverse
+restive|uneasy; agitated
+reticent|quiet; circumspect
+rue|bemoan; grieve
+ruminate|deliberate; meditate
+rustic|bucolic; homely
+sacrosanct|untouchable; consecrated
+salubrious|invigorating; bracing
+sanctimonious|pompous; priggish
+sanguine|buoyant; positive
+satiate|glut; cloy
+saturate|imbue; inundate
+savor|appreciate; delight in
+scathing|searing; harsh
+schism|rift; secession
+scurrilous|insulting; slanderous
+secular|earthly; profane
+sedulous|painstaking; persistent
+sentient|feeling; sapient
+serendipity|fortune; happenstance
+shibboleth|formula; idiom
+sinecure|plum; berth
+skepticism|suspicion; questioning
+slovenly|slipshod; messy
+solicitous|thoughtful; anxious
+soluble|dissolvent; fusible
+soporific|hypnotic; sedative
+spartan|ascetic; rigorous
+spate|rush; succession
+specious|sophistic; false
+spectrum|continuum; span
+sportive|jovial; jocular
+stoical|resigned; uncomplaining
+stolid|apathetic; dull-witted
+strident|jarring; loud
+stymie|frustrate; block
+subterfuge|pretext; cover
+succinct|pithy; summary
+supercilious|snobbish; lofty
+supine|recumbent; inactive
+supplicate|plead; pray
+surfeit|superfluity; plenty
+surmise|presume; hypothesize
+surreptitious|stealthy; sly
+swarthy|tanned; olive
+synchronous|coordinated; in step
+taciturn|reserved; silent
+tangential|incidental; off-topic
+tantamount|tantamount to; comparable
+temerity|impudence; gall
+tenable|plausible; arguable
+tenuous|fragile; shaky
+terra|terrain; world
+timorous|cowardly; fearful
+tirade|outburst; broadside
+toady|fawner; minion
+tome|codex; compendium
+torpid|listless; numb
+torrid|sultry; fervid
+tractable|pliant; biddable
+tremulous|quavering; unsteady
+trenchant|penetrating; forceful
+truculent|pugnacious; defiant
+turpitude|baseness; iniquity
+tyro|learner; greenhorn
+ubiquitous|universal; widespread
+umbrage|annoyance; displeasure
+unctuous|slimy; flattering
+untenable|unjustifiable; unsound
+unveiling|debut; uncovering
+upbraid|chide; reproach
+urbane|refined; worldly
+utilitarian|functional; businesslike
+vacillate|dither; fluctuate
+vapid|banal; flat
+vehement|emphatic; intense
+veneer|surface; semblance
+venerate|honor; respect
+veracity|sincerity; authenticity
+verbose|redundant; garrulous
+verve|spirit; gusto
+vestige|remains; token
+vexatious|galling; irritating
+vicissitudes|reversals; twists
+virtuoso|ace; prodigy
+viscous|gummy; semifluid
+vitriolic|virulent; venomous
+vituperate|denounce; scold
+vivacious|exuberant; vibrant
+volition|intention; free will
+voluble|glib; eloquent
+voracious|insatiable; gluttonous
+whet|excite; quicken
+wily|artful; foxy
+wistful|pensive; regretful
+yen|hunger; itch
+yoke|subjugation; servitude
+zealous|devoted; enthusiastic
+zephyr|puff; air`;
+const EX = Object.fromEntries(EX_RAW.split("\n").map(l => { const i = l.indexOf("|"); return [l.slice(0, i), l.slice(i + 1)]; }));
+const EXTRA = Object.fromEntries(EXTRA_RAW.split("\n").map(l => { const [w, s] = l.split("|"); return [w, s.split(";").map(x => x.trim()).filter(Boolean)]; }));
+function uniqCI(list) {
+  const seen = new Set(); const out = [];
+  for (const x of list) { const k = x.toLowerCase(); if (!seen.has(k)) { seen.add(k); out.push(x); } }
+  return out;
+}
 const WORDS = RAW.trim().split("\n").map(l => {
   const [w, s, d, r] = l.split("|");
-  return { w, s: s.split(";").map(x => x.trim()).filter(Boolean), d, r: r || "-" };
+  const base = s.split(";").map(x => x.trim()).filter(Boolean);
+  return { w, s: uniqCI([...base, ...(EXTRA[w] || [])]), d, r: r || "-", ex: EX[w] || "" };
 });
 
 let quiz = [], idx = 0, score = 0, log = [], current = null;
 
+let curMode = "syn";
 function shuffle(a) {
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -673,12 +1693,17 @@ function rootLabel(r) {
   return r === "-" ? "no clear root" : `${r} (${ROOTS[r] || "?"})`;
 }
 function makeOptions(item) {
+  if (curMode === "blank") {
+    const pool = [...new Set(WORDS.map(x => x.w).filter(x => x !== item.w))];
+    return { correct: item.w, opts: shuffle([item.w, ...shuffle(pool).slice(0, 3)]) };
+  }
   const mine = new Set(item.s.map(x => x.toLowerCase()));
   const pool = [...new Set(WORDS.flatMap(x => x.s).filter(x => !mine.has(x.toLowerCase())))];
   const correct = shuffle([...item.s])[0];
   return { correct, opts: shuffle([correct, ...shuffle(pool).slice(0, 3)]) };
 }
 function isCorrect(pick) {
+  if (current.mode === "blank") return pick.toLowerCase() === current.w.toLowerCase();
   return current.s.some(x => x.toLowerCase() === pick.toLowerCase());
 }
 function show(id) {
@@ -687,20 +1712,36 @@ function show(id) {
 }
 function goHome() { show("home"); }
 function startQuiz() {
+  curMode = document.querySelector('input[name="mode"]:checked').value;
   const sel = document.querySelector('input[name="n"]:checked').value;
   const n = sel === "all" ? WORDS.length : parseInt(sel, 10);
   startWith(shuffle([...WORDS]).slice(0, n));
 }
 function startWith(items) {
-  quiz = items.map(it => ({ ...it, ...makeOptions(it) }));
+  quiz = items.map(it => ({ ...it, ...makeOptions(it), mode: curMode }));
   idx = 0; score = 0; log = [];
   show("quiz");
   renderQ();
 }
+function blankSentence(item) {
+  const esc = item.w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const re = new RegExp("\\b" + esc + "\\b", "i");
+  return re.test(item.ex) ? item.ex.replace(re, "_____") : item.ex + " (_____)";
+}
 function renderQ() {
   current = quiz[idx];
   document.getElementById("progress").textContent = `${idx + 1} / ${quiz.length} · Score ${score}`;
-  document.getElementById("qword").textContent = current.w;
+  const qw = document.getElementById("qword");
+  const qh = document.getElementById("qhint");
+  if (current.mode === "blank") {
+    qw.className = "sentence";
+    qw.textContent = blankSentence(current);
+    qh.textContent = "Choose the word that best fits the blank.";
+  } else {
+    qw.className = "word";
+    qw.textContent = current.w;
+    qh.textContent = "Which word is closest in meaning?";
+  }
   document.getElementById("feedback").innerHTML = "";
   document.getElementById("nextBtn").classList.add("hidden");
   const box = document.getElementById("choices");
@@ -726,6 +1767,7 @@ function answer(pick) {
     <span class="${ok ? "ok" : "bad"}">${ok ? "Correct." : "Incorrect."}</span>
     <div><b>${current.w}</b>: ${current.s.join("; ")}</div>
     <div class="def">${current.d}</div>
+    <div class="def" style="font-style:italic">&ldquo;${current.ex}&rdquo;</div>
     <div><span class="tag">${rootLabel(current.r)}</span></div>`;
   const nb = document.getElementById("nextBtn");
   nb.textContent = idx + 1 < quiz.length ? "Next" : "See results";
@@ -745,7 +1787,7 @@ function showResult() {
   document.getElementById("explainBody").innerHTML = log.map(x => `
     <tr>
       <td class="${x.ok ? "mark-ok" : "mark-bad"}">${x.ok ? "O" : "X"}</td>
-      <td><b>${x.w}</b></td>
+      <td><b>${x.w}</b><div class="def">${x.ex}</div></td>
       <td class="syns">${x.s.join("; ")}${x.ok ? "" : ` <span class="def">(you: ${x.pick})</span>`}</td>
       <td class="def">${x.d}</td>
       <td><span class="tag">${x.r}</span></td>
@@ -791,7 +1833,7 @@ function renderList() {
   const rows = WORDS.filter(x => !q || [x.w, x.s.join(" "), x.d, x.r].some(t => t.toLowerCase().includes(q)));
   document.getElementById("listCount").textContent = `${rows.length} / ${WORDS.length} words`;
   document.getElementById("listBody").innerHTML = rows.map(x =>
-    `<tr><td><b>${x.w}</b></td><td class="syns">${x.s.join("; ")}</td><td class="def">${x.d}</td><td><span class="tag">${x.r}</span></td></tr>`).join("");
+    `<tr><td><b>${x.w}</b><div class="def">${x.ex}</div></td><td class="syns">${x.s.join("; ")}</td><td class="def">${x.d}</td><td><span class="tag">${x.r}</span></td></tr>`).join("");
 }
 </script>
 </body>
